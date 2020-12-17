@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: AspNetMonsters.ApplicationInsights.AspNetCore
-        path: ./src/Unsplash/bin/Release/Unsplash.${{ github.event.release.tag_name }}.nupkg
+        path: ./src/Unsplash/bin/Release/Unsplash.Net.${{ github.event.release.tag_name }}.nupkg
 
     - name: Publish Nuget Package
       run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.nuget_api_key }} --source https://api.nuget.org/v3/index.json --no-symbols true
