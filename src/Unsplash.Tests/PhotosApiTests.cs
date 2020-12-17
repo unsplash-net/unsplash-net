@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Unsplash.Api.Photos;
+using Unsplash.Models;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -31,7 +33,8 @@ namespace Unsplash.Tests
         public async Task GetPhoto()
         {
             var photoId = "AWMNB_buDlQ";
-            var jsonData = await File.ReadAllTextAsync("GetPhotoResponse.json");
+            var photoData = JsonConvert.DeserializeObject<Photo>(await File.ReadAllTextAsync("GetPhotoResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(photoData, JsonSerializerSettings);
 
             _server.Given(
                     Request.Create()
@@ -55,7 +58,8 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetPhotos()
         {
-            var jsonData = await File.ReadAllTextAsync("GetPhotosResponse.json");
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<Photo>>(await File.ReadAllTextAsync("GetPhotosResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             _server.Given(
                     Request.Create()
