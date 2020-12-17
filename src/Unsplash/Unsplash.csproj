@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Unsplash</PackageId>
+    <PackageId>Unsplash.Net</PackageId>
     <Authors>Vedant Koditkar</Authors>
     <Description>A .Net wrapper over Unsplash API</Description>
     <PackageTags>unsplash api json</PackageTags>
     <RepositoryUrl>https://github.com/unsplash-net/unsplash-net</RepositoryUrl>
     <PackageIcon>unsplash_logo_64x64.png</PackageIcon>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,10 @@
 
   <ItemGroup>
     <None Include="..\..\assets\unsplash_logo_64x64.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
