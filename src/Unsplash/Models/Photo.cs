@@ -358,7 +358,7 @@ namespace Unsplash.Models
         public DateTimeOffset UpdatedAt { get; set; }
 
         [JsonProperty("promoted_at")]
-        public DateTime? PromotedAt { get; set; }
+        public DateTimeOffset? PromotedAt { get; set; }
 
         [JsonProperty("width")]
         public int Width { get; set; }
