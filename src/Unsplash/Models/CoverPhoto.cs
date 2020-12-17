@@ -1,11 +1,11 @@
 ﻿
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace Unsplash.Models
 {
-    public class Photo
+    public class CoverPhoto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -17,7 +17,7 @@ namespace Unsplash.Models
         public DateTimeOffset UpdatedAt { get; set; }
 
         [JsonProperty("promoted_at")]
-        public object PromotedAt { get; set; }
+        public DateTimeOffset? PromotedAt { get; set; }
 
         [JsonProperty("width")]
         public int Width { get; set; }
@@ -41,7 +41,7 @@ namespace Unsplash.Models
         public Urls Urls { get; set; }
 
         [JsonProperty("links")]
-        public UserLinks Links { get; set; }
+        public PhotoLinks Links { get; set; }
 
         [JsonProperty("categories")]
         public List<object> Categories { get; set; }
@@ -56,30 +56,9 @@ namespace Unsplash.Models
         public List<object> CurrentUserCollections { get; set; }
 
         [JsonProperty("sponsorship")]
-        public Sponsorship Sponsorship { get; set; }
+        public object Sponsorship { get; set; }
 
         [JsonProperty("user")]
         public User User { get; set; }
-
-        [JsonProperty("exif")]
-        public Exif Exif { get; set; }
-
-        [JsonProperty("location")]
-        public Location Location { get; set; }
-
-        [JsonProperty("meta")]
-        public Meta Meta { get; set; }
-
-        [JsonProperty("tags")]
-        public List<Tag> Tags { get; set; }
-
-        [JsonProperty("related_collections")]
-        public RelatedCollections RelatedCollections { get; set; }
-
-        [JsonProperty("views")]
-        public int Views { get; set; }
-
-        [JsonProperty("downloads")]
-        public int Downloads { get; set; }
     }
 }
