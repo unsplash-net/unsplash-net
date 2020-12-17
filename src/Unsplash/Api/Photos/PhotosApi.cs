@@ -1,25 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Unsplash.Client;
 using Unsplash.Models;
 
-[assembly: InternalsVisibleTo("Unsplash.Tests")]
-namespace Unsplash.Api
+namespace Unsplash.Api.Photos
 {
-    public interface IPhotosApi
-    {
-        Task<Photo> GetPhotoAsync(string id);
-    }
-
-    internal static class PhotosApiUrls
-    {
-        public static string GetPhoto(string id) => $"/photos/{id}";
-    }
-
     public class PhotosApi : ApiClient, IPhotosApi
     {
         public PhotosApi(string baseUrl, string accessKey) : base(baseUrl, accessKey)
@@ -34,6 +20,18 @@ namespace Unsplash.Api
             };
 
             return await GetAsync<Photo>(PhotosApiUrls.GetPhoto(id));
+        }
+
+        public async Task<IEnumerable<Photo>> GetPhotosAsync(FilterOptions options)
+        {
+            if (options == null)
+            {
+                options = FilterOptions.Default;
+            }
+
+            var url = PhotosApiUrls.GetPhotos(options);
+
+            return await GetAsync<IEnumerable<Photo>>(url);
         }
     }
 }

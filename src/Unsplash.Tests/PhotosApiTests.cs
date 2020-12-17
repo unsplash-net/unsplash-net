@@ -1,7 +1,8 @@
-using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Threading.Tasks;
-using Unsplash.Api;
+using Newtonsoft.Json;
+using Unsplash.Api.Photos;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -9,7 +10,7 @@ using Xunit;
 
 namespace Unsplash.Tests
 {
-    public class PhotosApiTests
+    public class PhotosApiTests : IDisposable
     {
         private readonly WireMockServer _server;
         private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings()
@@ -19,7 +20,7 @@ namespace Unsplash.Tests
         };
 
         private const string BASE_URL = "http://localhost:3000/";
-        private const string ACCESS_KEY_URL = "AccessKey";
+        private const string ACCESS_KEY = "AccessKey";
 
         public PhotosApiTests()
         {
@@ -42,13 +43,43 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            var client = new PhotosApi(BASE_URL, ACCESS_KEY_URL);
+            var client = new PhotosApi(BASE_URL, ACCESS_KEY);
             
             var photo = await client.GetPhotoAsync(photoId);
 
             var actual = JsonConvert.SerializeObject(photo, JsonSerializerSettings);
             
             Assert.Equal(jsonData, actual);
+        }
+
+        [Fact]
+        public async Task GetPhotos()
+        {
+            var jsonData = await File.ReadAllTextAsync("GetPhotosResponse.json");
+
+            _server.Given(
+                    Request.Create()
+                    .WithPath("/photos")
+                    .UsingGet()
+                ).RespondWith(
+                    Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(jsonData)
+                );
+
+            var client = new PhotosApi(BASE_URL, ACCESS_KEY);
+
+            var photos = await client.GetPhotosAsync(FilterOptions.Default);
+
+            var actual = JsonConvert.SerializeObject(photos, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
+
+        public void Dispose()
+        {
+            _server.Stop();
+            _server.Dispose();
         }
     }
 }
