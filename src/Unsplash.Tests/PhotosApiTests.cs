@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,12 +23,11 @@ namespace Unsplash.Tests
             Formatting = Formatting.Indented
         };
 
-        private const string BASE_URL = "http://localhost:3000/";
         private const string ACCESS_KEY = "Token";
 
         public PhotosApiTests()
         {
-            _server = WireMockServer.Start(BASE_URL);
+            _server = WireMockServer.Start();
         }
 
         [Fact]
@@ -45,9 +44,9 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            var client = new PhotosApi(new Client.ApiClientOptions
+            var client = new PhotosApi(new ApiClientOptions
             {
-                BaseUrl = BASE_URL,
+                BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
             });
 
@@ -71,9 +70,9 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            var client = new PhotosApi(new Client.ApiClientOptions
+            var client = new PhotosApi(new ApiClientOptions
             {
-                BaseUrl = BASE_URL,
+                BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
             });
 
