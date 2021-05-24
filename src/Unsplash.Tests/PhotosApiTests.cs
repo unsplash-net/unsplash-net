@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Unsplash.Api.Photos;
 using Unsplash.Models;
+using WireMock.Matchers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -22,7 +23,7 @@ namespace Unsplash.Tests
         };
 
         private const string BASE_URL = "http://localhost:3000/";
-        private const string ACCESS_KEY = "AccessKey";
+        private const string ACCESS_KEY = "Token";
 
         public PhotosApiTests()
         {
@@ -33,13 +34,14 @@ namespace Unsplash.Tests
         public async Task GetPhoto()
         {
             var photoId = "AWMNB_buDlQ";
-            var photoData = JsonConvert.DeserializeObject<Photo>(await File.ReadAllTextAsync("GetPhotoResponse.json"));
+            var photoData = JsonConvert.DeserializeObject<PhotoFull>(await File.ReadAllTextAsync("GetPhotoResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photoData, JsonSerializerSettings);
 
             _server.Given(
                     Request.Create()
                     .WithPath(PhotosApiUrls.GetPhoto(photoId))
                     .UsingGet()
+                    .WithHeader("Authorization", $"Client-ID {ACCESS_KEY}", MatchBehaviour.AcceptOnMatch)
                 ).RespondWith(
                     Response.Create()
                     .WithStatusCode(200)
@@ -58,13 +60,14 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetPhotos()
         {
-            var photosData = JsonConvert.DeserializeObject<IEnumerable<Photo>>(await File.ReadAllTextAsync("GetPhotosResponse.json"));
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoFull>>(await File.ReadAllTextAsync("GetPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             _server.Given(
                     Request.Create()
                     .WithPath("/photos")
                     .UsingGet()
+                    .WithHeader("Authorization", $"Client-ID {ACCESS_KEY}", MatchBehaviour.AcceptOnMatch)
                 ).RespondWith(
                     Response.Create()
                     .WithStatusCode(200)
