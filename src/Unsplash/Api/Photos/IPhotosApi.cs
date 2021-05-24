@@ -7,6 +7,7 @@ namespace Unsplash.Api.Photos
     public interface IPhotosApi
     {
         Task<IEnumerable<PhotoFull>> GetPhotosAsync(FilterOptions options = null);
-        Task<PhotoFull> GetPhotoAsync(string id);
+        Task<PhotoFull> GetPhotoAsync(string photoId);
+        Task<Stats> GetPhotoStatisticsAsync(string photoId);
     }
 }

@@ -5,7 +5,7 @@ namespace Unsplash.Api.Photos
 {
     internal static class PhotosApiUrls
     {
-        public static string GetPhoto(string id) => $"/photos/{id}";
+        public static string GetPhoto(string photoId) => $"/photos/{photoId}";
 
         public static string GetPhotos(FilterOptions options)
         {
@@ -18,5 +18,7 @@ namespace Unsplash.Api.Photos
 
             return $"/photos?{UrlHelper.CreateQueryString(parameters)}";
         }
+
+        public static string GetPhotoStatistics(string photoId) => $"/photos/{photoId}/statistics";
     }
 }

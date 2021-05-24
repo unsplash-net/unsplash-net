@@ -12,14 +12,14 @@ namespace Unsplash.Api.Photos
         {
         }
 
-        public async Task<PhotoFull> GetPhotoAsync(string id)
+        public async Task<PhotoFull> GetPhotoAsync(string photoId)
         {
             var serializerSettings = new JsonSerializerSettings
             {
                 DateParseHandling = DateParseHandling.DateTimeOffset
             };
 
-            return await GetAsync<PhotoFull>(PhotosApiUrls.GetPhoto(id));
+            return await GetAsync<PhotoFull>(PhotosApiUrls.GetPhoto(photoId));
         }
 
         public async Task<IEnumerable<PhotoFull>> GetPhotosAsync(FilterOptions options)
@@ -32,6 +32,13 @@ namespace Unsplash.Api.Photos
             var url = PhotosApiUrls.GetPhotos(options);
 
             return await GetAsync<IEnumerable<PhotoFull>>(url);
+        }
+
+        public async Task<Stats> GetPhotoStatisticsAsync(string photoId)
+        {
+            var url = PhotosApiUrls.GetPhotoStatistics(photoId);
+
+            return await GetAsync<Stats>(url);
         }
     }
 }
