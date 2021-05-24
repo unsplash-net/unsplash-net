@@ -83,6 +83,35 @@ namespace Unsplash.Tests
             Assert.Equal(jsonData, actual);
         }
 
+        [Fact]
+        public async Task GetPhotoStatistics()
+        {
+            // This is hack 🙈
+            var photosData = JsonConvert.DeserializeObject<Stats>(await File.ReadAllTextAsync("GetPhotoStatistics.json"));
+            var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
+
+            var photoId = "pduutGbL2-M";
+
+            _server.Given(CreateGetRequestBuilder(PhotosApiUrls.GetPhotoStatistics(photoId)))
+                .RespondWith(
+                    Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(jsonData)
+                );
+
+            var client = new PhotosApi(new ApiClientOptions
+            {
+                BaseUrl = _server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var photos = await client.GetPhotoStatisticsAsync(photoId);
+
+            var actual = JsonConvert.SerializeObject(photos, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
+
         private static IRequestBuilder CreateGetRequestBuilder(string path)
         {
             return Request.Create()
