@@ -20,5 +20,21 @@ namespace Unsplash.Api.Photos
         }
 
         public static string GetPhotoStatistics(string photoId) => $"/photos/{photoId}/statistics";
+
+        public static string GetRandomPhoto(RandomPhotoFilterOptions options)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                { "collections", options.Collections },
+                { "topics", options.Topics },
+                { "username", options.Username },
+                { "query", options.Query },
+                { "orientation", options.Orientation?.GetEnumMemberAttrValue() },
+                { "content_filter", options.ContentFilter?.GetEnumMemberAttrValue() },
+                { "count", options.Count.ToString() }
+            };
+
+            return $"/photos/random?{UrlHelper.CreateQueryString(parameters)}";
+        }
     }
 }

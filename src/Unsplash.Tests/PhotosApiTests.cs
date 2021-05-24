@@ -112,6 +112,32 @@ namespace Unsplash.Tests
             Assert.Equal(jsonData, actual);
         }
 
+        [Fact]
+        public async Task GetRandomPhotos()
+        {
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoRandom>>(await File.ReadAllTextAsync("GetRandomPhotosResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
+
+            _server.Given(CreateGetRequestBuilder("/photos/random"))
+                .RespondWith(
+                    Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(jsonData)
+                );
+
+            var client = new PhotosApi(new ApiClientOptions
+            {
+                BaseUrl = _server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var photos = await client.GetRandomPhotosAsync();
+
+            var actual = JsonConvert.SerializeObject(photos, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
+
         private static IRequestBuilder CreateGetRequestBuilder(string path)
         {
             return Request.Create()

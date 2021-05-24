@@ -253,6 +253,26 @@ namespace Unsplash.Models
     {
     }
 
+    public class PhotoRandom : IPhotoRandom
+    {
+        public string AltDescription { get; set; }
+        public string Color { get; set; }
+        public string Description { get; set; }
+        public int Height { get; set; }
+        public int Likes { get; set; }
+        public PhotoLinks Links { get; set; }
+        public DateTimeOffset? PromotedAt { get; set; }
+        public int Width { get; set; }
+        public UserBasic User { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
+        public string BlurHash { get; set; }
+        public PhotoUrls Urls { get; set; }
+        public string Id { get; set; }
+        public PhotoExif Exif { get; set; }
+        public PhotoLocation Location { get; set; }
+    }
+
 
     public enum RelatedCollectionType
     {

@@ -40,5 +40,17 @@ namespace Unsplash.Api.Photos
 
             return await GetAsync<Stats>(url);
         }
+
+        public async Task<IEnumerable<PhotoRandom>> GetRandomPhotosAsync(RandomPhotoFilterOptions options = null)
+        {
+            if (options == null)
+            {
+                options = new RandomPhotoFilterOptions();
+            }
+
+            var url = PhotosApiUrls.GetRandomPhoto(options);
+
+            return await GetAsync<IEnumerable<PhotoRandom>>(url);
+        }
     }
 }
