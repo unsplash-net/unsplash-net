@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,19 +10,29 @@ namespace Unsplash.Client
 {
     public abstract class ApiClient
     {
-        public ApiClient(string baseUrl, string accessKey)
+        private ApiClientOptions _options;
+
+        public ApiClient(ApiClientOptions options)
         {
-            BaseUrl = baseUrl;
-            AccessKey = accessKey;
+            options = MergeOptions(options);
 
             Client = new HttpClient()
             {
-                BaseAddress = new Uri(BaseUrl)
+                BaseAddress = new Uri(options.BaseUrl)
             };
+
+            _options = options;
         }
 
-        public string BaseUrl { get; }
-        public string AccessKey { get; }
+        private static ApiClientOptions MergeOptions(ApiClientOptions options)
+        {
+            return new ApiClientOptions
+            {
+                BaseUrl = options.BaseUrl ?? Constants.BASE_URL,
+                AccessKey = options.AccessKey,
+                ApiVersion = options.ApiVersion ?? Constants.API_VERSION
+            };
+        }
 
         public HttpClient Client { get; }
 
@@ -47,7 +56,7 @@ namespace Unsplash.Client
             throw new ApiException(response.StatusCode, message);
         }
 
-        private async  Task<T> ParseStreamAsync<T>(HttpResponseMessage response, JsonSerializerSettings serializerSettings)
+        private async Task<T> ParseStreamAsync<T>(HttpResponseMessage response, JsonSerializerSettings serializerSettings)
         {
             using (Stream stream = await response.Content.ReadAsStreamAsync())
             {
@@ -68,7 +77,8 @@ namespace Unsplash.Client
             CancellationToken cancellationToken = default)
         {
             HttpRequestMessage httpRequest = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            httpRequest.Headers.Add("Authorization", $"Client-ID {AccessKey}");
+            httpRequest.Headers.Add("Authorization", $"Client-ID {_options.AccessKey}");
+            httpRequest.Headers.Add("Accept-Version", _options.ApiVersion);
 
             if (headers != null)
             {
@@ -85,5 +95,12 @@ namespace Unsplash.Client
                 request.Headers.Add(header.Key, header.Value);
             }
         }
+    }
+
+    public class ApiClientOptions
+    {
+        public string BaseUrl { get; set; }
+        public string AccessKey { get; set; }
+        public string ApiVersion { get; set; }
     }
 }

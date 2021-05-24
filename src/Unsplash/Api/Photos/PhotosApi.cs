@@ -8,7 +8,7 @@ namespace Unsplash.Api.Photos
 {
     public class PhotosApi : ApiClient, IPhotosApi
     {
-        public PhotosApi(string baseUrl, string accessKey) : base(baseUrl, accessKey)
+        public PhotosApi(ApiClientOptions options) : base(options)
         {
         }
 

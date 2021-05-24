@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Unsplash.Api.Photos;
+using Unsplash.Client;
 using Unsplash.Models;
 using WireMock.Matchers;
 using WireMock.RequestBuilders;
@@ -37,23 +38,23 @@ namespace Unsplash.Tests
             var photoData = JsonConvert.DeserializeObject<PhotoFull>(await File.ReadAllTextAsync("GetPhotoResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photoData, JsonSerializerSettings);
 
-            _server.Given(
-                    Request.Create()
-                    .WithPath(PhotosApiUrls.GetPhoto(photoId))
-                    .UsingGet()
-                    .WithHeader("Authorization", $"Client-ID {ACCESS_KEY}", MatchBehaviour.AcceptOnMatch)
-                ).RespondWith(
+            _server.Given(CreateGetRequestBuilder(PhotosApiUrls.GetPhoto(photoId)))
+                .RespondWith(
                     Response.Create()
                     .WithStatusCode(200)
                     .WithBody(jsonData)
                 );
 
-            var client = new PhotosApi(BASE_URL, ACCESS_KEY);
-            
+            var client = new PhotosApi(new Client.ApiClientOptions
+            {
+                BaseUrl = BASE_URL,
+                AccessKey = ACCESS_KEY
+            });
+
             var photo = await client.GetPhotoAsync(photoId);
 
             var actual = JsonConvert.SerializeObject(photo, JsonSerializerSettings);
-            
+
             Assert.Equal(jsonData, actual);
         }
 
@@ -63,24 +64,33 @@ namespace Unsplash.Tests
             var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoFull>>(await File.ReadAllTextAsync("GetPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
-            _server.Given(
-                    Request.Create()
-                    .WithPath("/photos")
-                    .UsingGet()
-                    .WithHeader("Authorization", $"Client-ID {ACCESS_KEY}", MatchBehaviour.AcceptOnMatch)
-                ).RespondWith(
+            _server.Given(CreateGetRequestBuilder("/photos"))
+                .RespondWith(
                     Response.Create()
                     .WithStatusCode(200)
                     .WithBody(jsonData)
                 );
 
-            var client = new PhotosApi(BASE_URL, ACCESS_KEY);
+            var client = new PhotosApi(new Client.ApiClientOptions
+            {
+                BaseUrl = BASE_URL,
+                AccessKey = ACCESS_KEY
+            });
 
             var photos = await client.GetPhotosAsync(FilterOptions.Default);
 
             var actual = JsonConvert.SerializeObject(photos, JsonSerializerSettings);
 
             Assert.Equal(jsonData, actual);
+        }
+
+        private static IRequestBuilder CreateGetRequestBuilder(string path)
+        {
+            return Request.Create()
+                    .WithPath(path)
+                    .UsingGet()
+                    .WithHeader("Authorization", $"Client-ID {ACCESS_KEY}", MatchBehaviour.AcceptOnMatch)
+                    .WithHeader("Accept-Version", Constants.API_VERSION, MatchBehaviour.AcceptOnMatch);
         }
 
         public void Dispose()
