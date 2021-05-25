@@ -10,11 +10,14 @@ namespace Unsplash.Api.Collections
     public interface ICollectionsApi
     {
         Task<IEnumerable<CollectionBasic>> ListAsync(ListCollectionsParams parameters = null);
+        Task<CollectionBasic> GetCollectionAsync(string collectionId);
     }
 
     public static class CollectionsApiUrls
     {
         public static string List() => "/collections";
+
+        public static string GetCollection(string collectionId) => $"/collections/{collectionId}";
     }
 
     public class ListCollectionsParams
@@ -53,6 +56,13 @@ namespace Unsplash.Api.Collections
             var url = $"{CollectionsApiUrls.List()}?{UrlHelper.CreateQueryString(queryParams)}";
 
             return await GetAsync<IEnumerable<CollectionBasic>>(url);
+        }
+
+        public async Task<CollectionBasic> GetCollectionAsync(string collectionId)
+        {
+            var url = CollectionsApiUrls.GetCollection(collectionId);
+
+            return await GetAsync<CollectionBasic>(url);
         }
     }
 }

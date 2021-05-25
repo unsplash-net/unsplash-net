@@ -54,6 +54,39 @@ namespace Unsplash.Tests
             Assert.Equal(jsonData, responseJson);
         }
 
+        [Fact]
+        public async Task GetConnection()
+        {
+            var collectionData = JsonConvert.DeserializeObject<CollectionBasic>(await File.ReadAllTextAsync("data/collections/GetCollectionResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(collectionData);
+
+            string collectionId = "542632";
+
+            _server.Given(
+                WireMockHelpers.CreateGetRequestBuilder(
+                    CollectionsApiUrls.GetCollection(collectionId),
+                    ACCESS_KEY,
+                    Constants.API_VERSION
+                )
+            ).RespondWith(
+                Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(jsonData)
+            );
+
+            var client = new CollectionsApi(new ApiClientOptions
+            {
+                BaseUrl = _server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var response = await client.GetCollectionAsync(collectionId);
+
+            var responseJson = JsonConvert.SerializeObject(response);
+
+            Assert.Equal(jsonData, responseJson);
+        }
+
         public void Dispose()
         {
             _server.Stop();
