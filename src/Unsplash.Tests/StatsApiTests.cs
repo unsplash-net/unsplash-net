@@ -59,6 +59,34 @@ namespace Unsplash.Tests
             Assert.Equal(jsonData, actual);
         }
 
+        [Fact]
+        public async Task GetPastMonthStats()
+        {
+            var pastMonthStats = JsonConvert.DeserializeObject<PastMonthStats>(await File.ReadAllTextAsync("GetPastMonthStatsResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(pastMonthStats, JsonSerializerSettings);
+
+            _server.Given(
+                WireMockHelpers.CreateGetRequestBuilder(StatsApiUrls.PastMonthStats(), ACCESS_KEY, Constants.API_VERSION)
+                )
+                .RespondWith(
+                    Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(jsonData)
+                );
+
+            var client = new StatsApi(new ApiClientOptions
+            {
+                BaseUrl = _server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var data = await client.GetPastMonthStatsAsync();
+
+            var actual = JsonConvert.SerializeObject(data, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
+
         public void Dispose()
         {
             _server.Stop();

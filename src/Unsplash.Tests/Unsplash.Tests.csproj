@@ -25,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="GetPastMonthStatsResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="GetPhotoResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

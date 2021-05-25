@@ -41,4 +41,31 @@ namespace Unsplash.Models
         public long Requests { get; set; }
     }
 
+    public class PastMonthStats
+    {
+        [JsonProperty("downloads")]
+        public long Downloads { get; set; }
+
+        [JsonProperty("views")]
+        public long Views { get; set; }
+
+        [JsonProperty("new_photos")]
+        public long NewPhotos { get; set; }
+
+        [JsonProperty("new_photographers")]
+        public long NewPhotographers { get; set; }
+
+        [JsonProperty("new_pixels")]
+        public long NewPixels { get; set; }
+
+        [JsonProperty("new_developers")]
+        public long NewDevelopers { get; set; }
+
+        [JsonProperty("new_applications")]
+        public long NewApplications { get; set; }
+
+        [JsonProperty("new_requests")]
+        public long NewRequests { get; set; }
+    }
+
 }
