@@ -146,6 +146,9 @@ namespace Unsplash.Tests
         public async Task TrackPhoto()
         {
             var jsonData = "{\r\n  \"url\": \"https://images.unsplash.com/photo-1593642702909-dec73df255d7?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb\"\r\n}";
+            var data = JsonConvert.DeserializeObject<TrackPhotoDownload>(jsonData);
+            jsonData = JsonConvert.SerializeObject(data, JsonSerializerSettings);
+
 
             var photoId = "TxXuh_hAFd8";
 
