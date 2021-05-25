@@ -29,11 +29,11 @@ namespace Unsplash.Api.Photos
             return await GetAsync<IEnumerable<PhotoFull>>(url);
         }
 
-        public async Task<Stats> GetPhotoStatisticsAsync(string photoId)
+        public async Task<Models.Stats> GetPhotoStatisticsAsync(string photoId)
         {
             var url = PhotosApiUrls.GetPhotoStatistics(photoId);
 
-            return await GetAsync<Stats>(url);
+            return await GetAsync<Models.Stats>(url);
         }
 
         public async Task<IEnumerable<PhotoRandom>> GetRandomPhotosAsync(RandomPhotoFilterOptions options = null)
