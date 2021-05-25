@@ -58,5 +58,34 @@ namespace Unsplash.Tests
 
             Assert.Equal(jsonData, actual);
         }
+
+        [Fact]
+        public async Task SearchCollections()
+        {
+            var paginatedCollectionsListData = JsonConvert.DeserializeObject<PaginatedList<CollectionBasic>>(await File.ReadAllTextAsync("data/search/SearchCollectionsResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(paginatedCollectionsListData, JsonSerializerSettings);
+
+            _server.Given(
+                WireMockHelpers.CreateGetRequestBuilder(SearchApiUrls.Collections(), ACCESS_KEY, Constants.API_VERSION)
+                )
+                .RespondWith(
+                    Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(jsonData)
+                );
+
+            ISearchApi client = new SearchApi(new ApiClientOptions
+            {
+                BaseUrl = _server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var query = "data";
+            var paginatedCollectionsList = await client.CollectionsAsync(query);
+
+            var actual = JsonConvert.SerializeObject(paginatedCollectionsList, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
     }
 }
