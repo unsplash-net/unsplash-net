@@ -10,5 +10,7 @@ namespace Unsplash.Api.Photos
         Task<PhotoFull> GetPhotoAsync(string photoId);
         Task<Stats> GetPhotoStatisticsAsync(string photoId);
         Task<IEnumerable<PhotoRandom>> GetRandomPhotosAsync(RandomPhotoFilterOptions options = null);
+        Task<TrackPhotoDownload> TrackPhotoDownload(string photoId);
+
     }
 }

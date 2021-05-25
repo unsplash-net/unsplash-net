@@ -329,4 +329,9 @@ namespace Unsplash.Models
         public PhotoExif Exif { get; set; }
         public PhotoLocation Location { get; set; }
     }
+
+    public class TrackPhotoDownload
+    {
+        public string Url { get; set; }
+    }
 }

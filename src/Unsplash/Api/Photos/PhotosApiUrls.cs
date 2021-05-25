@@ -36,5 +36,7 @@ namespace Unsplash.Api.Photos
 
             return $"/photos/random?{UrlHelper.CreateQueryString(parameters)}";
         }
+
+        public static string TrackPhotoDownload(string photoId) => $"/photos/{photoId}/download";
     }
 }

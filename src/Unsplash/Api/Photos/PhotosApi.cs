@@ -14,11 +14,6 @@ namespace Unsplash.Api.Photos
 
         public async Task<PhotoFull> GetPhotoAsync(string photoId)
         {
-            var serializerSettings = new JsonSerializerSettings
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
             return await GetAsync<PhotoFull>(PhotosApiUrls.GetPhoto(photoId));
         }
 
@@ -51,6 +46,13 @@ namespace Unsplash.Api.Photos
             var url = PhotosApiUrls.GetRandomPhoto(options);
 
             return await GetAsync<IEnumerable<PhotoRandom>>(url);
+        }
+
+        public async Task<TrackPhotoDownload> TrackPhotoDownload(string photoId)
+        {
+            var url = PhotosApiUrls.TrackPhotoDownload(photoId);
+
+            return await GetAsync<TrackPhotoDownload>(url);
         }
     }
 }
