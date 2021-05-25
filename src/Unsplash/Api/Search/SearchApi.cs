@@ -65,5 +65,29 @@ namespace Unsplash.Api.Search
 
             return await GetAsync<PaginatedList<CollectionBasic>>(url);
         }
+
+        public async Task<PaginatedList<UserMedium>> UsersAsync(string query, SearchUsersParams parameters = null)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                throw new ArgumentNullException(nameof(query));
+            }
+
+            if (parameters == null)
+            {
+                parameters = new SearchUsersParams();
+            }
+
+            var queryParams = new Dictionary<string, string>()
+            {
+                { "query", query },
+                { "page", parameters.Page?.ToString() },
+                { "per_page", parameters.PerPage?.ToString() }
+            };
+
+            var url = $"{SearchApiUrls.Users()}?{UrlHelper.CreateQueryString(queryParams)}";
+
+            return await GetAsync<PaginatedList<UserMedium>>(url);
+        }
     }
 }
