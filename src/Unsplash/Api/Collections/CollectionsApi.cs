@@ -1,61 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unsplash.Api.Photos;
 using Unsplash.Client;
-using Unsplash.Models;
 using Unsplash.Extensions;
+using Unsplash.Models;
 
 namespace Unsplash.Api.Collections
 {
-    public interface ICollectionsApi
-    {
-        Task<IEnumerable<CollectionBasic>> ListAsync(ListCollectionsParams parameters = null);
-        Task<CollectionBasic> GetCollectionAsync(string collectionId);
-        Task<IEnumerable<PhotoBasic>> GetCollectionPhotosAsync(string collectionId, GetCollectionPhotosParams parameters = null);
-        Task<IEnumerable<CollectionBasic>> GetRelatedCollectionsAsync(string collectionId);
-    }
-
-    public static class CollectionsApiUrls
-    {
-        public static string List() => "/collections";
-
-        public static string GetCollection(string collectionId) => $"/collections/{collectionId}";
-
-        public static string GetCollectionPhotos(string collectionId) => $"/collections/{collectionId}/photos";
-
-        public static string GetRelatedCollections(string collectionId) => $"/collections/{collectionId}/related";
-    }
-
-    public class ListCollectionsParams
-    {
-        public ListCollectionsParams(int? page, int? perPage)
-        {
-            Page = page;
-            PerPage = perPage;
-        }
-
-        public static ListCollectionsParams Default => new ListCollectionsParams(1, 10);
-
-        public int? Page { get; }
-        public int? PerPage { get; }
-    }
-
-    public class GetCollectionPhotosParams
-    {
-        public GetCollectionPhotosParams(int? page = null, int? perPage = null, Orientation? orientation = null)
-        {
-            Page = page;
-            PerPage = perPage;
-            Orientation = orientation;
-        }
-
-        public int? Page { get; }
-        public int? PerPage { get; }
-        public Orientation? Orientation { get; }
-    }
-
     public class CollectionsApi : ApiClient, ICollectionsApi
     {
         public CollectionsApi(ApiClientOptions options) : base(options)
