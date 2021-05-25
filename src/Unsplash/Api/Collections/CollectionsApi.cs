@@ -14,6 +14,7 @@ namespace Unsplash.Api.Collections
         Task<IEnumerable<CollectionBasic>> ListAsync(ListCollectionsParams parameters = null);
         Task<CollectionBasic> GetCollectionAsync(string collectionId);
         Task<IEnumerable<PhotoBasic>> GetCollectionPhotosAsync(string collectionId, GetCollectionPhotosParams parameters = null);
+        Task<IEnumerable<CollectionBasic>> GetRelatedCollectionsAsync(string collectionId);
     }
 
     public static class CollectionsApiUrls
@@ -23,6 +24,8 @@ namespace Unsplash.Api.Collections
         public static string GetCollection(string collectionId) => $"/collections/{collectionId}";
 
         public static string GetCollectionPhotos(string collectionId) => $"/collections/{collectionId}/photos";
+
+        public static string GetRelatedCollections(string collectionId) => $"/collections/{collectionId}/related";
     }
 
     public class ListCollectionsParams
@@ -101,6 +104,13 @@ namespace Unsplash.Api.Collections
             var url = $"{CollectionsApiUrls.GetCollectionPhotos(collectionId)}?{UrlHelper.CreateQueryString(queryParams)}";
 
             return await GetAsync<IEnumerable<PhotoBasic>>(url);
+        }
+
+        public async Task<IEnumerable<CollectionBasic>> GetRelatedCollectionsAsync(string collectionId)
+        {
+            var url = CollectionsApiUrls.GetRelatedCollections(collectionId);
+
+            return await GetAsync<IEnumerable<CollectionBasic>>(url);
         }
     }
 }

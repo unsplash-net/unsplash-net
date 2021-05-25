@@ -31,6 +31,9 @@
     <None Update="data\collections\GetCollectionResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="data\collections\GetRelatedCollectionsResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="data\collections\ListCollectionsResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
