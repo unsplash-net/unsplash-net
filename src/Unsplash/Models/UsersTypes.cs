@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Unsplash.Models
 {
-
     public interface IUserLinks
     {
         [JsonProperty("self")]
@@ -109,6 +109,33 @@ namespace Unsplash.Models
 
     public class UserBasic : IUserBasic
     {
+        public string Bio { get; set; }
+        public string FirstName { get; set; }
+        public string InstagramUsername { get; set; }
+        public string LastName { get; set; }
+        public UserLinks Links { get; set; }
+        public string Location { get; set; }
+        public string Name { get; set; }
+        public string PortfolioUrl { get; set; }
+        public ProfileImage ProfileImage { get; set; }
+        public int TotalCollections { get; set; }
+        public int TotalLikes { get; set; }
+        public int TotalPhotos { get; set; }
+        public string TwitterUsername { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
+        public string Username { get; set; }
+        public string Id { get; set; }
+    }
+
+    public interface IUserMedium : IUserBasic
+    {
+        [JsonProperty("photos")]
+        IEnumerable<PhotoVeryBasic> Photos { get; set; }
+    }
+
+    public class UserMedium : IUserMedium
+    {
+        public IEnumerable<PhotoVeryBasic> Photos { get; set; }
         public string Bio { get; set; }
         public string FirstName { get; set; }
         public string InstagramUsername { get; set; }

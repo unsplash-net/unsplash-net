@@ -37,6 +37,15 @@
     <None Update="data\collections\ListCollectionsResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="data\search\SearchCollectionsResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\search\SearchPhotosResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\search\SearchUsersResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="data\stats\GetPastMonthStatsResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
