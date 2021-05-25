@@ -25,22 +25,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="GetPastMonthStatsResponse.json">
+    <None Update="data\stats\GetPastMonthStatsResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="GetPhotoResponse.json">
+    <None Update="data\photos\GetPhotoResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="GetPhotosResponse.json">
+    <None Update="data\photos\GetPhotosResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="GetPhotoStatistics.json">
+    <None Update="data\photos\GetPhotoStatistics.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="GetRandomPhotosResponse.json">
+    <None Update="data\photos\GetRandomPhotosResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="GetStatsTotalsResponse.json">
+    <None Update="data\stats\GetStatsTotalsResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

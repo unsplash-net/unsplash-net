@@ -34,7 +34,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetTotals()
         {
-            var totalsData = JsonConvert.DeserializeObject<StatsTotals>(await File.ReadAllTextAsync("GetStatsTotalsResponse.json"));
+            var totalsData = JsonConvert.DeserializeObject<StatsTotals>(await File.ReadAllTextAsync("data/stats/GetStatsTotalsResponse.json"));
             var jsonData = JsonConvert.SerializeObject(totalsData, JsonSerializerSettings);
 
             _server.Given(
@@ -62,7 +62,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetPastMonthStats()
         {
-            var pastMonthStats = JsonConvert.DeserializeObject<PastMonthStats>(await File.ReadAllTextAsync("GetPastMonthStatsResponse.json"));
+            var pastMonthStats = JsonConvert.DeserializeObject<PastMonthStats>(await File.ReadAllTextAsync("data/stats/GetPastMonthStatsResponse.json"));
             var jsonData = JsonConvert.SerializeObject(pastMonthStats, JsonSerializerSettings);
 
             _server.Given(

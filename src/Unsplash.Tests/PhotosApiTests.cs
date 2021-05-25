@@ -38,7 +38,7 @@ namespace Unsplash.Tests
         public async Task GetPhoto()
         {
             var photoId = "AWMNB_buDlQ";
-            var photoData = JsonConvert.DeserializeObject<PhotoFull>(await File.ReadAllTextAsync("GetPhotoResponse.json"));
+            var photoData = JsonConvert.DeserializeObject<PhotoFull>(await File.ReadAllTextAsync("data/photos/GetPhotoResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photoData, JsonSerializerSettings);
 
             _server.Given(CreateGetRequestBuilder(PhotosApiUrls.GetPhoto(photoId)))
@@ -64,7 +64,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetPhotos()
         {
-            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoFull>>(await File.ReadAllTextAsync("GetPhotosResponse.json"));
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoFull>>(await File.ReadAllTextAsync("data/photos/GetPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             _server.Given(CreateGetRequestBuilder("/photos"))
@@ -91,7 +91,7 @@ namespace Unsplash.Tests
         public async Task GetPhotoStatistics()
         {
             // This is hack 🙈
-            var photosData = JsonConvert.DeserializeObject<Stats>(await File.ReadAllTextAsync("GetPhotoStatistics.json"));
+            var photosData = JsonConvert.DeserializeObject<Stats>(await File.ReadAllTextAsync("data/photos/GetPhotoStatistics.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             var photoId = "pduutGbL2-M";
@@ -119,7 +119,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetRandomPhotos()
         {
-            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoRandom>>(await File.ReadAllTextAsync("GetRandomPhotosResponse.json"));
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoRandom>>(await File.ReadAllTextAsync("data/photos/GetRandomPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             _server.Given(CreateGetRequestBuilder("/photos/random"))
