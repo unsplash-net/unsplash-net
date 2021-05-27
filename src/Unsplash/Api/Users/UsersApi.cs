@@ -1,35 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unsplash.Client;
-using Unsplash.Models;
 using Unsplash.Extensions;
+using Unsplash.Models;
 
 namespace Unsplash.Api.Users
 {
-    public interface IUsersApi
-    {
-        Task<UserFull> GetPublicProfileAsync(string username);
-        Task<UrlLinkResponse> GetPortfolioLinkAsync(string username);
-        Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null);
-        Task<IEnumerable<PhotoBasic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null);
-        Task<IEnumerable<CollectionBasic>> GetCollectionsAsync(string username, PaginationParams parameters = null);
-    }
-
-    public static class UsersApiUrls
-    {
-        public static string GetPublicProfile(string username) => $"/users/{username}";
-
-        public static string GetPortfolioLink(string username) => $"/users/{username}/portfolio";
-
-        public static string GetPhotos(string username) => $"/users/{username}/photos";
-
-        public static string GetLikedPhotos(string username) => $"/users/{username}/likes";
-
-        public static string GetCollections(string username) => $"/users/{username}/collections";
-    }
-
     public class UsersApi : ApiClient, IUsersApi
     {
         public UsersApi(ApiClientOptions options) : base(options)
@@ -109,6 +85,24 @@ namespace Unsplash.Api.Users
             var url = $"{UsersApiUrls.GetCollections(username)}?{UrlHelper.CreateQueryString(queryParams)}";
 
             return await GetAsync<IEnumerable<CollectionBasic>>(url);
+        }
+
+        public async Task<UserStatistics> GetUserStatisticsAsync(string username, UserStatisticsParams parameters = null)
+        {
+            if (parameters == null)
+            {
+                parameters = new UserStatisticsParams();
+            }
+
+            var queryParams = new Dictionary<string, string>()
+            {
+                { "resolution", parameters.Resolution?.ToString() },
+                { "quantity", parameters.Quantity?.ToString() }
+            };
+
+            var url = $"{UsersApiUrls.GetStatistics(username)}?{UrlHelper.CreateQueryString(queryParams)}";
+
+            return await GetAsync<UserStatistics>(url);
         }
     }
 }

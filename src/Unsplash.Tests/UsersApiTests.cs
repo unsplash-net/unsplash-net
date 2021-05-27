@@ -151,5 +151,33 @@ namespace Unsplash.Tests
 
             Assert.Equal(jsonData, actual);
         }
+
+        [Fact]
+        public async Task GetUserStatistics()
+        {
+            var fileData = await File.ReadAllTextAsync("data/users/GetUserStatistics.json");
+            var userStatisticsData = JsonConvert.DeserializeObject<UserStatistics>(fileData);
+            var jsonData = JsonConvert.SerializeObject(userStatisticsData, JsonSerializerSettings);
+
+            var username = "amyjoyhumphries";
+
+            Server.Given(
+                WireMockHelpers.CreateGetRequestBuilder(UsersApiUrls.GetStatistics(username), ACCESS_KEY, Constants.API_VERSION)
+            ).RespondWith(
+                Response.Create().WithStatusCode(200).WithBody(jsonData)
+            );
+
+            var client = new UsersApi(new ApiClientOptions
+            {
+                BaseUrl = Server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var userStatistics = await client.GetUserStatisticsAsync(username);
+
+            var actual = JsonConvert.SerializeObject(userStatistics, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
     }
 }
