@@ -172,4 +172,10 @@ namespace Unsplash.Models
         public int FollowersCount { get; set; }
         public int FollowingCount { get; set; }
     }
+
+    public class UrlLinkResponse
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
 }
