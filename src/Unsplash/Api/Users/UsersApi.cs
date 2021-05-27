@@ -14,6 +14,7 @@ namespace Unsplash.Api.Users
         Task<UrlLinkResponse> GetPortfolioLinkAsync(string username);
         Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null);
         Task<IEnumerable<PhotoBasic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null);
+        Task<IEnumerable<CollectionBasic>> GetCollectionsAsync(string username, PaginationParams parameters = null);
     }
 
     public static class UsersApiUrls
@@ -25,6 +26,8 @@ namespace Unsplash.Api.Users
         public static string GetPhotos(string username) => $"/users/{username}/photos";
 
         public static string GetLikedPhotos(string username) => $"/users/{username}/likes";
+
+        public static string GetCollections(string username) => $"/users/{username}/collections";
     }
 
     public class UsersApi : ApiClient, IUsersApi
@@ -88,6 +91,24 @@ namespace Unsplash.Api.Users
             var url = $"{UsersApiUrls.GetLikedPhotos(username)}?{UrlHelper.CreateQueryString(queryParams)}";
 
             return await GetAsync<IEnumerable<PhotoBasic>>(url);
+        }
+
+        public async Task<IEnumerable<CollectionBasic>> GetCollectionsAsync(string username, PaginationParams parameters = null)
+        {
+            if (parameters == null)
+            {
+                parameters = new PaginationParams();
+            }
+
+            var queryParams = new Dictionary<string, string>()
+            {
+                { "page", parameters.Page?.ToString() },
+                { "per_page", parameters.PerPage?.ToString() }
+            };
+
+            var url = $"{UsersApiUrls.GetCollections(username)}?{UrlHelper.CreateQueryString(queryParams)}";
+
+            return await GetAsync<IEnumerable<CollectionBasic>>(url);
         }
     }
 }
