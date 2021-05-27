@@ -64,6 +64,9 @@
     <None Update="data\stats\GetStatsTotalsResponse.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="data\users\GetUserPublicProfileResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -153,4 +153,23 @@ namespace Unsplash.Models
         public string Username { get; set; }
         public string Id { get; set; }
     }
+
+    public interface IUserFull : IUserMedium
+    {
+        [JsonProperty("downloads")]
+        int Downloads { get; set; }
+
+        [JsonProperty("followers_count")]
+        int FollowersCount { get; set; }
+
+        [JsonProperty("following_count")]
+        int FollowingCount { get; set; }
+    }
+
+    public class UserFull : UserMedium, IUserFull
+    {
+        public int Downloads { get; set; }
+        public int FollowersCount { get; set; }
+        public int FollowingCount { get; set; }
+    }
 }
