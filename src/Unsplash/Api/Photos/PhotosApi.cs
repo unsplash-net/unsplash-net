@@ -8,21 +8,16 @@ namespace Unsplash.Api.Photos
 {
     public class PhotosApi : ApiClient, IPhotosApi
     {
-        public PhotosApi(string baseUrl, string accessKey) : base(baseUrl, accessKey)
+        public PhotosApi(ApiClientOptions options) : base(options)
         {
         }
 
-        public async Task<Photo> GetPhotoAsync(string id)
+        public async Task<PhotoFull> GetPhotoAsync(string photoId)
         {
-            var serializerSettings = new JsonSerializerSettings
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            return await GetAsync<Photo>(PhotosApiUrls.GetPhoto(id));
+            return await GetAsync<PhotoFull>(PhotosApiUrls.GetPhoto(photoId));
         }
 
-        public async Task<IEnumerable<Photo>> GetPhotosAsync(FilterOptions options)
+        public async Task<IEnumerable<PhotoFull>> GetPhotosAsync(FilterOptions options)
         {
             if (options == null)
             {
@@ -31,7 +26,33 @@ namespace Unsplash.Api.Photos
 
             var url = PhotosApiUrls.GetPhotos(options);
 
-            return await GetAsync<IEnumerable<Photo>>(url);
+            return await GetAsync<IEnumerable<PhotoFull>>(url);
+        }
+
+        public async Task<Models.Stats> GetPhotoStatisticsAsync(string photoId)
+        {
+            var url = PhotosApiUrls.GetPhotoStatistics(photoId);
+
+            return await GetAsync<Models.Stats>(url);
+        }
+
+        public async Task<IEnumerable<PhotoRandom>> GetRandomPhotosAsync(RandomPhotoFilterOptions options = null)
+        {
+            if (options == null)
+            {
+                options = new RandomPhotoFilterOptions();
+            }
+
+            var url = PhotosApiUrls.GetRandomPhoto(options);
+
+            return await GetAsync<IEnumerable<PhotoRandom>>(url);
+        }
+
+        public async Task<TrackPhotoDownload> TrackPhotoDownload(string photoId)
+        {
+            var url = PhotosApiUrls.TrackPhotoDownload(photoId);
+
+            return await GetAsync<TrackPhotoDownload>(url);
         }
     }
 }

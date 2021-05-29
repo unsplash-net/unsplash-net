@@ -5,7 +5,7 @@ namespace Unsplash.Api.Photos
 {
     internal static class PhotosApiUrls
     {
-        public static string GetPhoto(string id) => $"/photos/{id}";
+        public static string GetPhoto(string photoId) => $"/photos/{photoId}";
 
         public static string GetPhotos(FilterOptions options)
         {
@@ -18,5 +18,25 @@ namespace Unsplash.Api.Photos
 
             return $"/photos?{UrlHelper.CreateQueryString(parameters)}";
         }
+
+        public static string GetPhotoStatistics(string photoId) => $"/photos/{photoId}/statistics";
+
+        public static string GetRandomPhoto(RandomPhotoFilterOptions options)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                { "collections", options.Collections },
+                { "topics", options.Topics },
+                { "username", options.Username },
+                { "query", options.Query },
+                { "orientation", options.Orientation?.GetEnumMemberAttrValue() },
+                { "content_filter", options.ContentFilter?.GetEnumMemberAttrValue() },
+                { "count", options.Count.ToString() }
+            };
+
+            return $"/photos/random?{UrlHelper.CreateQueryString(parameters)}";
+        }
+
+        public static string TrackPhotoDownload(string photoId) => $"/photos/{photoId}/download";
     }
 }
