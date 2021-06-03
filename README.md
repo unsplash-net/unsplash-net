@@ -1,8 +1,9 @@
-<div align="center>
-    <h1>Unsplash SDK for .Net</h1>
-    <p>
-        <b>A simple and easy to use client for the <a href="https://unsplash.com/documentation#getting-started">Unsplash API</a></b>
-    </p>
+<div align="center">
+	<h1>Unsplash SDK for .Net</h1>
+	<p>
+		<b>A simple and easy to use client for the <a href="https://unsplash.com/documentation#getting-started">Unsplash API</a></b>
+	</p>
+	<br>
 </div>
 
 ![CI](https://github.com/unsplash-net/unsplash-net/workflows/CI/badge.svg)
