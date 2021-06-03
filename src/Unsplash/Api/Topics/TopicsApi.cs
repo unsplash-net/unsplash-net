@@ -9,7 +9,7 @@ namespace Unsplash.Api
 {
     public class TopicsApi : ApiClient, ITopicsApi
     {
-        public TopicsApi(ApiClientOptions options) : base(options)
+        public TopicsApi(ClientOptions options) : base(options)
         {
         }
 

@@ -8,7 +8,7 @@ namespace Unsplash.Api
 {
     public class CollectionsApi : ApiClient, ICollectionsApi
     {
-        public CollectionsApi(ApiClientOptions options) : base(options)
+        public CollectionsApi(ClientOptions options) : base(options)
         {
         }
 

@@ -9,7 +9,7 @@ namespace Unsplash.Api
 {
     public class SearchApi : ApiClient, ISearchApi
     {
-        public SearchApi(ApiClientOptions options) : base(options)
+        public SearchApi(ClientOptions options) : base(options)
         {
         }
 

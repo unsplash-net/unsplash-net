@@ -46,7 +46,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            var client = new StatsApi(new ApiClientOptions
+            var client = new StatsApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -74,7 +74,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            var client = new StatsApi(new ApiClientOptions
+            var client = new StatsApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
