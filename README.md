@@ -27,7 +27,7 @@ dotnet add package Unsplash.Net
 Import and initialize the client using the public authentication token created above.
 
 ```csharp
-var client = new UnsplashClient(new ApiClientOptions
+var client = new UnsplashClient(new ClientOptions
 {
     AccessKey = "<Token>"
 });
