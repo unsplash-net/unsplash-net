@@ -10,9 +10,9 @@ namespace Unsplash
 {
     public abstract class ApiClient
     {
-        private ApiClientOptions _options;
+        private ClientOptions _options;
 
-        public ApiClient(ApiClientOptions options)
+        public ApiClient(ClientOptions options)
         {
             options = MergeOptions(options);
 
@@ -24,9 +24,9 @@ namespace Unsplash
             _options = options;
         }
 
-        private static ApiClientOptions MergeOptions(ApiClientOptions options)
+        private static ClientOptions MergeOptions(ClientOptions options)
         {
-            return new ApiClientOptions
+            return new ClientOptions
             {
                 BaseUrl = options.BaseUrl ?? Constants.BASE_URL,
                 AccessKey = options.AccessKey,
@@ -95,12 +95,5 @@ namespace Unsplash
                 request.Headers.Add(header.Key, header.Value);
             }
         }
-    }
-
-    public class ApiClientOptions
-    {
-        public string BaseUrl { get; set; }
-        public string AccessKey { get; set; }
-        public string ApiVersion { get; set; }
     }
 }

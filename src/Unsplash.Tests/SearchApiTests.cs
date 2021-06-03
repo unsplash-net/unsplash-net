@@ -45,7 +45,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            ISearchApi client = new SearchApi(new ApiClientOptions
+            ISearchApi client = new SearchApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -74,7 +74,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            ISearchApi client = new SearchApi(new ApiClientOptions
+            ISearchApi client = new SearchApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -103,7 +103,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
                 );
 
-            ISearchApi client = new SearchApi(new ApiClientOptions
+            ISearchApi client = new SearchApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY

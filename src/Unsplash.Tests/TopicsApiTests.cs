@@ -24,7 +24,7 @@ namespace Unsplash.Tests
                 Response.Create().WithStatusCode(200).WithBody(jsonData)
             );
 
-            var client = new TopicsApi(new ApiClientOptions
+            var client = new TopicsApi(new ClientOptions
             {
                 BaseUrl = Server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -51,7 +51,7 @@ namespace Unsplash.Tests
                 Response.Create().WithStatusCode(200).WithBody(jsonData)
             );
 
-            var client = new TopicsApi(new ApiClientOptions
+            var client = new TopicsApi(new ClientOptions
             {
                 BaseUrl = Server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -78,7 +78,7 @@ namespace Unsplash.Tests
                 Response.Create().WithStatusCode(200).WithBody(jsonData)
             );
 
-            var client = new TopicsApi(new ApiClientOptions
+            var client = new TopicsApi(new ClientOptions
             {
                 BaseUrl = Server.Urls[0],
                 AccessKey = ACCESS_KEY

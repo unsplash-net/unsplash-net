@@ -40,7 +40,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
             );
 
-            var client = new CollectionsApi(new ApiClientOptions
+            var client = new CollectionsApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -73,7 +73,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
             );
 
-            var client = new CollectionsApi(new ApiClientOptions
+            var client = new CollectionsApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -106,7 +106,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
             );
 
-            var client = new CollectionsApi(new ApiClientOptions
+            var client = new CollectionsApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY
@@ -139,7 +139,7 @@ namespace Unsplash.Tests
                     .WithBody(jsonData)
             );
 
-            var client = new CollectionsApi(new ApiClientOptions
+            var client = new CollectionsApi(new ClientOptions
             {
                 BaseUrl = _server.Urls[0],
                 AccessKey = ACCESS_KEY

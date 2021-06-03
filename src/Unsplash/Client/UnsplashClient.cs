@@ -4,7 +4,7 @@ namespace Unsplash
 {
     public class UnsplashClient
     {
-        public UnsplashClient(ApiClientOptions options)
+        public UnsplashClient(ClientOptions options)
         {
             Collections = new CollectionsApi(options);
             Photos = new PhotosApi(options);

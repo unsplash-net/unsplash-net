@@ -6,7 +6,7 @@ namespace Unsplash.Api
 {
     public class StatsApi : ApiClient, IStatsApi
     {
-        public StatsApi(ApiClientOptions options) : base(options)
+        public StatsApi(ClientOptions options) : base(options)
         {
         }
 
