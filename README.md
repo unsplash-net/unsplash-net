@@ -37,7 +37,7 @@ var client = new UnsplashClient(new ClientOptions
 Make A request to any Endpoint. For example you can call below to fetch the list of photos.
 
 ```csharp
-var photos = await client.Photos.ListAsync();
+var photos = await client.Photos.GetPhotosAsync();
 ```
 
 ## Contribution Guideline
