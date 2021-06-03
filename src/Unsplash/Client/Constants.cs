@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Unsplash.Tests")]
-namespace Unsplash.Client
+namespace Unsplash
 {
     internal class Constants
     {

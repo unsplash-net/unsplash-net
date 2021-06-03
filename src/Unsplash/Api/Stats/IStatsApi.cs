@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Unsplash.Models;
 
-namespace Unsplash.Api.Stats
+namespace Unsplash.Api
 {
     public interface IStatsApi
     {

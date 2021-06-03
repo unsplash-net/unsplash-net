@@ -1,6 +1,4 @@
-﻿using Unsplash.Api.Photos;
-
-namespace Unsplash.Api.Topics
+﻿namespace Unsplash.Api
 {
     public class GetTopicPhotosParams
     {

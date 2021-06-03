@@ -2,8 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Unsplash.Api.Search;
-using Unsplash.Client;
+using Unsplash.Api;
 using Unsplash.Models;
 using WireMock.ResponseBuilders;
 using WireMock.Server;

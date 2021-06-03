@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Unsplash.Api.Photos;
 using Unsplash.Extensions;
 
 namespace Unsplash.Api

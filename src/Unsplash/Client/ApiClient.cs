@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Unsplash.Client
+namespace Unsplash
 {
     public abstract class ApiClient
     {

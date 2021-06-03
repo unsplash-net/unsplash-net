@@ -1,4 +1,4 @@
-﻿namespace Unsplash.Api.Users
+﻿namespace Unsplash.Api
 {
     public class UserStatisticsParams
     {

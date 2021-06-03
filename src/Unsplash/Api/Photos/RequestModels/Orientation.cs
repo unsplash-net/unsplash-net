@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Unsplash.Api.Photos
+namespace Unsplash.Api
 {
     public enum Orientation
     {

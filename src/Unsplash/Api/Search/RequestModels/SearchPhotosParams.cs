@@ -1,6 +1,4 @@
-﻿using Unsplash.Api.Photos;
-
-namespace Unsplash.Api.Search
+﻿namespace Unsplash.Api
 {
     public class SearchPhotosParams
     {

@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Unsplash.Client;
 using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;
 
-namespace Unsplash.Api.Stats
+namespace Unsplash.Api
 {
     public class StatsApi : ApiClient, IStatsApi
     {

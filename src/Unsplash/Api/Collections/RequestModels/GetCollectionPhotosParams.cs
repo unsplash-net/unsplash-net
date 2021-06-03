@@ -1,6 +1,4 @@
-﻿using Unsplash.Api.Photos;
-
-namespace Unsplash.Api.Collections
+﻿namespace Unsplash.Api
 {
     public class GetCollectionPhotosParams
     {
