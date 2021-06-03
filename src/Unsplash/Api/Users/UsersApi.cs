@@ -70,7 +70,7 @@ namespace Unsplash.Api.Users
             return await GetAsync<IEnumerable<PhotoBasic>>(url);
         }
 
-        public async Task<IEnumerable<CollectionBasic>> GetCollectionsAsync(string username, PaginationParams parameters = null)
+        public async Task<IEnumerable<Collection.Basic>> GetCollectionsAsync(string username, PaginationParams parameters = null)
         {
             if (parameters == null)
             {
@@ -85,7 +85,7 @@ namespace Unsplash.Api.Users
 
             var url = $"{UsersApiUrls.GetCollections(username)}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<IEnumerable<CollectionBasic>>(url);
+            return await GetAsync<IEnumerable<Collection.Basic>>(url);
         }
 
         public async Task<UserStatistics> GetUserStatisticsAsync(string username, UserStatisticsParams parameters = null)

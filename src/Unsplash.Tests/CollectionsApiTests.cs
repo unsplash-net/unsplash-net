@@ -27,7 +27,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task ListCollections()
         {
-            var collectionsData = JsonConvert.DeserializeObject<IEnumerable<CollectionBasic>>(await File.ReadAllTextAsync("data/collections/ListCollectionsResponse.json"));
+            var collectionsData = JsonConvert.DeserializeObject<IEnumerable<Collection.Basic>>(await File.ReadAllTextAsync("data/collections/ListCollectionsResponse.json"));
             var jsonData = JsonConvert.SerializeObject(collectionsData);
 
             _server.Given(
@@ -58,7 +58,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetConnection()
         {
-            var collectionData = JsonConvert.DeserializeObject<CollectionBasic>(await File.ReadAllTextAsync("data/collections/GetCollectionResponse.json"));
+            var collectionData = JsonConvert.DeserializeObject<Collection.Basic>(await File.ReadAllTextAsync("data/collections/GetCollectionResponse.json"));
             var jsonData = JsonConvert.SerializeObject(collectionData);
 
             string collectionId = "542632";
@@ -124,7 +124,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetRelatedCollections()
         {
-            var relatedCollectionsData = JsonConvert.DeserializeObject<IEnumerable<CollectionBasic>>(await File.ReadAllTextAsync("data/collections/GetRelatedCollectionsResponse.json"));
+            var relatedCollectionsData = JsonConvert.DeserializeObject<IEnumerable<Collection.Basic>>(await File.ReadAllTextAsync("data/collections/GetRelatedCollectionsResponse.json"));
             var jsonData = JsonConvert.SerializeObject(relatedCollectionsData);
 
             string collectionId = "542632";

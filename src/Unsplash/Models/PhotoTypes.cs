@@ -293,14 +293,14 @@ namespace Unsplash.Models
         RelatedCollectionType Type { get; set; }
 
         [JsonProperty("results")]
-        List<CollectionBasic> Results { get; set; }
+        List<Collection.Basic> Results { get; set; }
     }
 
     public class RelatedCollections : IRelatedCollections
     {
         public int Total { get; set; }
         public RelatedCollectionType Type { get; set; }
-        public List<CollectionBasic> Results { get; set; }
+        public List<Collection.Basic> Results { get; set; }
     }
 
     public interface IPhotoFull : IPhotoBasic, IExifAdnLocation

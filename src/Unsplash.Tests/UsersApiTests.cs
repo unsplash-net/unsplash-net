@@ -129,7 +129,7 @@ namespace Unsplash.Tests
         public async Task GetUserCollections()
         {
             var fileData = await File.ReadAllTextAsync("data/users/GetUserCollectionsResponse.json");
-            var userCollectionsData = JsonConvert.DeserializeObject<IEnumerable<CollectionBasic>>(fileData);
+            var userCollectionsData = JsonConvert.DeserializeObject<IEnumerable<Collection.Basic>>(fileData);
             var jsonData = JsonConvert.SerializeObject(userCollectionsData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";

@@ -10,7 +10,7 @@ namespace Unsplash.Api.Users
         Task<UrlLinkResponse> GetPortfolioLinkAsync(string username);
         Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null);
         Task<IEnumerable<PhotoBasic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null);
-        Task<IEnumerable<CollectionBasic>> GetCollectionsAsync(string username, PaginationParams parameters = null);
+        Task<IEnumerable<Collection.Basic>> GetCollectionsAsync(string username, PaginationParams parameters = null);
         Task<UserStatistics> GetUserStatisticsAsync(string username, UserStatisticsParams parameters = null);
     }
 }
