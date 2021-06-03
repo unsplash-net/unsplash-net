@@ -16,7 +16,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task ListTopics()
         {
-            var profileData = JsonConvert.DeserializeObject<IEnumerable<Topic.Basic>>(await File.ReadAllTextAsync("data/users/ListTopicsResponse.json"));
+            var profileData = JsonConvert.DeserializeObject<IEnumerable<Topic.Basic>>(await File.ReadAllTextAsync("data/topics/ListTopicsResponse.json"));
             var jsonData = JsonConvert.SerializeObject(profileData, JsonSerializerSettings);
 
             Server.Given(
