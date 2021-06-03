@@ -1,4 +1,4 @@
-﻿namespace Unsplash.Api.Collections
+﻿namespace Unsplash.Api
 {
     public class ListCollectionsParams
     {

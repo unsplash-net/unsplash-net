@@ -1,4 +1,4 @@
-﻿namespace Unsplash.Api.Photos
+﻿namespace Unsplash.Api
 {
     public class RandomPhotoFilterOptions
     {

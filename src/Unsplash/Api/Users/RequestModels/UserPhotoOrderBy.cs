@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Unsplash.Api.Users
+namespace Unsplash.Api
 {
     public enum UserPhotoOrderBy
     {
