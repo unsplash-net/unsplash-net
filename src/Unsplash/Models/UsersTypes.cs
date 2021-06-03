@@ -6,7 +6,7 @@ namespace Unsplash.Models
 {
     public static class User
     {
-        public interface IUserLinks
+        public interface ILinks
         {
             [JsonProperty("self")]
             string Self { get; set; }
@@ -30,7 +30,7 @@ namespace Unsplash.Models
             string Followers { get; set; }
         }
 
-        public class Links : IUserLinks
+        public class Links : ILinks
         {
             public string Self { get; set; }
             public string Html { get; set; }
@@ -60,7 +60,7 @@ namespace Unsplash.Models
             public string Large { get; set; }
         }
 
-        public interface IUserBasic : IEntity
+        public interface IBasic : IEntity
         {
             [JsonProperty("bio")]
             string Bio { get; set; }
@@ -109,7 +109,7 @@ namespace Unsplash.Models
 
         }
 
-        public class Basic : IUserBasic
+        public class Basic : IBasic
         {
             public string Bio { get; set; }
             public string FirstName { get; set; }
@@ -129,13 +129,13 @@ namespace Unsplash.Models
             public string Id { get; set; }
         }
 
-        public interface IUserMedium : IUserBasic
+        public interface IMedium : IBasic
         {
             [JsonProperty("photos")]
             IEnumerable<Photo.VeryBasic> Photos { get; set; }
         }
 
-        public class Medium : IUserMedium
+        public class Medium : IMedium
         {
             public IEnumerable<Photo.VeryBasic> Photos { get; set; }
             public string Bio { get; set; }
@@ -156,7 +156,7 @@ namespace Unsplash.Models
             public string Id { get; set; }
         }
 
-        public interface IUserFull : IUserMedium
+        public interface IFull : IMedium
         {
             [JsonProperty("downloads")]
             int Downloads { get; set; }
@@ -168,7 +168,7 @@ namespace Unsplash.Models
             int FollowingCount { get; set; }
         }
 
-        public class Full : Medium, IUserFull
+        public class Full : Medium, IFull
         {
             public int Downloads { get; set; }
             public int FollowersCount { get; set; }

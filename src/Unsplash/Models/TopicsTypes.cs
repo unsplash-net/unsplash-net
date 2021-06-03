@@ -28,7 +28,7 @@ namespace Unsplash.Models
             Closed
         }
 
-        public interface ITopicBasic : IEntity
+        public interface IBasic : IEntity
         {
             [JsonProperty("cover_photo")]
             Photo.Basic CoverPhoto { get; set; }
@@ -77,13 +77,13 @@ namespace Unsplash.Models
             string UpdatedAt { get; set; }
         }
 
-        public interface ITopicFull : ITopicBasic
+        public interface IFull : IBasic
         {
             [JsonProperty("top_contributors")]
             IEnumerable<User.Basic> TopContributors { get; set; }
         }
 
-        public class Basic : ITopicBasic
+        public class Basic : IBasic
         {
             public Photo.Basic CoverPhoto { get; set; }
             public IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
@@ -103,7 +103,7 @@ namespace Unsplash.Models
             public string Id { get; set; }
         }
 
-        public class Full : ITopicFull
+        public class Full : IFull
         {
             public IEnumerable<User.Basic> TopContributors { get; set; }
             public Photo.Basic CoverPhoto { get; set; }
