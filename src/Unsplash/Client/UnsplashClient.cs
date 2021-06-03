@@ -1,5 +1,5 @@
-﻿using Unsplash.Api;
-using Unsplash.Client;
+﻿using Unsplash;
+using Unsplash.Api;
 
 namespace Unsplash
 {

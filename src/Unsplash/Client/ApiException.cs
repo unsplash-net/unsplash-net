@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Unsplash.Client
+namespace Unsplash
 {
     class ApiException : Exception
     {

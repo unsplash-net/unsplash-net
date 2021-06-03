@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Unsplash.Client;
+using Unsplash;
 using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;
 
