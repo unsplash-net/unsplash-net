@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Unsplash.Api.Photos
+﻿namespace Unsplash.Api.Photos
 {
     public class RandomPhotoFilterOptions
     {
@@ -29,23 +27,5 @@ namespace Unsplash.Api.Photos
         public Orientation? Orientation { get; }
         public ContentFilter? ContentFilter { get; }
         public int Count { get; }
-    }
-
-    public enum Orientation
-    {
-        [EnumMember(Value = "landscape")]
-        Landscape,
-        [EnumMember(Value = "portrait")]
-        Portrait,
-        [EnumMember(Value = "squarish")]
-        Squarish
-    }
-
-    public enum ContentFilter
-    {
-        [EnumMember(Value = "low")]
-        Low,
-        [EnumMember(Value = "high")]
-        High
     }
 }

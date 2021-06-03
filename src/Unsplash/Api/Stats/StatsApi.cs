@@ -5,12 +5,6 @@ using static Unsplash.Api.ApiEndpoints;
 
 namespace Unsplash.Api.Stats
 {
-    public interface IStatsApi
-    {
-        Task<StatsTotals> GetTotalsAsync();
-        Task<PastMonthStats> GetPastMonthStatsAsync();
-    }
-
     public class StatsApi : ApiClient, IStatsApi
     {
         public StatsApi(ApiClientOptions options) : base(options)
