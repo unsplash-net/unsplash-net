@@ -49,7 +49,7 @@ namespace Unsplash.Models
             Links Links { get; set; }
 
             [JsonProperty("owners")]
-            IEnumerable<UserBasic> Owners { get; set; }
+            IEnumerable<User.Basic> Owners { get; set; }
 
             [JsonProperty("preview_photos")]
             IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
@@ -80,7 +80,7 @@ namespace Unsplash.Models
         public interface ITopicFull : ITopicBasic
         {
             [JsonProperty("top_contributors")]
-            IEnumerable<UserBasic> TopContributors { get; set; }
+            IEnumerable<User.Basic> TopContributors { get; set; }
         }
 
         public class Basic : ITopicBasic
@@ -91,7 +91,7 @@ namespace Unsplash.Models
             public string EndsAt { get; set; }
             public bool IsFeatured { get; set; }
             public Links Links { get; set; }
-            public IEnumerable<UserBasic> Owners { get; set; }
+            public IEnumerable<User.Basic> Owners { get; set; }
             public IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
             public string PublishedAt { get; set; }
             public string StartsAt { get; set; }
@@ -105,14 +105,14 @@ namespace Unsplash.Models
 
         public class Full : ITopicFull
         {
-            public IEnumerable<UserBasic> TopContributors { get; set; }
+            public IEnumerable<User.Basic> TopContributors { get; set; }
             public PhotoBasic CoverPhoto { get; set; }
             public IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
             public string Description { get; set; }
             public string EndsAt { get; set; }
             public bool IsFeatured { get; set; }
             public Links Links { get; set; }
-            public IEnumerable<UserBasic> Owners { get; set; }
+            public IEnumerable<User.Basic> Owners { get; set; }
             public IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
             public string PublishedAt { get; set; }
             public string StartsAt { get; set; }

@@ -150,7 +150,7 @@ namespace Unsplash.Models
         int Width { get; set; }
 
         [JsonProperty("user")]
-        UserBasic User { get; set; }
+        User.Basic User { get; set; }
     }
 
     public class PhotoBasic : IPhotoBasic
@@ -164,7 +164,7 @@ namespace Unsplash.Models
         public PhotoLinks Links { get; set; }
         public DateTimeOffset? PromotedAt { get; set; }
         public int Width { get; set; }
-        public UserBasic User { get; set; }
+        public User.Basic User { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
         public PhotoUrls Urls { get; set; }
@@ -263,7 +263,7 @@ namespace Unsplash.Models
         public PhotoLinks Links { get; set; }
         public DateTimeOffset? PromotedAt { get; set; }
         public int Width { get; set; }
-        public UserBasic User { get; set; }
+        public User.Basic User { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
         public string BlurHash { get; set; }
@@ -321,7 +321,7 @@ namespace Unsplash.Models
         public PhotoLinks Links { get; set; }
         public DateTimeOffset? PromotedAt { get; set; }
         public int Width { get; set; }
-        public UserBasic User { get; set; }
+        public User.Basic User { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
         public PhotoUrls Urls { get; set; }

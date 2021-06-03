@@ -13,11 +13,11 @@ namespace Unsplash.Api.Users
         {
         }
 
-        public async Task<UserFull> GetPublicProfileAsync(string username)
+        public async Task<User.Full> GetPublicProfileAsync(string username)
         {
             var url = UsersApiUrls.GetPublicProfile(username);
 
-            return await GetAsync<UserFull>(url);
+            return await GetAsync<User.Full>(url);
         }
 
         public async Task<UrlLinkResponse> GetPortfolioLinkAsync(string username)

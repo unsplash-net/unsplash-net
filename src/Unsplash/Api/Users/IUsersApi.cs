@@ -6,7 +6,7 @@ namespace Unsplash.Api.Users
 {
     public interface IUsersApi
     {
-        Task<UserFull> GetPublicProfileAsync(string username);
+        Task<User.Full> GetPublicProfileAsync(string username);
         Task<UrlLinkResponse> GetPortfolioLinkAsync(string username);
         Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null);
         Task<IEnumerable<PhotoBasic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null);

@@ -44,7 +44,7 @@ namespace Unsplash.Models
 
 
             [JsonProperty("user")]
-            UserBasic User { get; set; }
+            User.Basic User { get; set; }
 
         }
 
@@ -60,7 +60,7 @@ namespace Unsplash.Models
             public string Title { get; set; }
             public int TotalPhotos { get; set; }
             public DateTimeOffset UpdatedAt { get; set; }
-            public UserBasic User { get; set; }
+            public User.Basic User { get; set; }
             public string Id { get; set; }
         }
 

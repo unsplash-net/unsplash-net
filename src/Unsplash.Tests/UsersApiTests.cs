@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using Newtonsoft.Json;
 using Unsplash.Api.Users;
 using Unsplash.Client;
@@ -18,7 +16,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetUserPublicProfile()
         {
-            var profileData = JsonConvert.DeserializeObject<UserFull>(await File.ReadAllTextAsync("data/users/GetUserPublicProfileResponse.json"));
+            var profileData = JsonConvert.DeserializeObject<User.Full>(await File.ReadAllTextAsync("data/users/GetUserPublicProfileResponse.json"));
             var jsonData = JsonConvert.SerializeObject(profileData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
