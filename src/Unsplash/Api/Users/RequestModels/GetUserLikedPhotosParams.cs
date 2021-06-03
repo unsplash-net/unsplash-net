@@ -1,6 +1,4 @@
-﻿using Unsplash.Api.Photos;
-
-namespace Unsplash.Api.Users
+﻿namespace Unsplash.Api
 {
     public class GetUserLikedPhotosParams
     {

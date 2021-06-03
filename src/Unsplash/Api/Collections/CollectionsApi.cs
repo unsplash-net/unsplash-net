@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unsplash.Client;
 using Unsplash.Extensions;
 using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;
 
-namespace Unsplash.Api.Collections
+namespace Unsplash.Api
 {
     public class CollectionsApi : ApiClient, ICollectionsApi
     {

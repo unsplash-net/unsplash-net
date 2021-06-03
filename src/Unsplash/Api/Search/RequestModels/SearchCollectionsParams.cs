@@ -1,4 +1,4 @@
-﻿namespace Unsplash.Api.Search
+﻿namespace Unsplash.Api
 {
     public class SearchCollectionsParams
     {

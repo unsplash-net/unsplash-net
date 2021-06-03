@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Unsplash.Api.Topics
+namespace Unsplash.Api
 {
     public class ListTopicsParams
     {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Unsplash.Models;
 
-namespace Unsplash.Api.Topics
+namespace Unsplash.Api
 {
     public interface ITopicsApi
     {

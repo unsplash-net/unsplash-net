@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Unsplash.Api.Search
+namespace Unsplash.Api
 {
     public enum SearchPhotosOrderBy
     {
