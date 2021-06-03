@@ -1,13 +1,13 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Xunit;
-using Unsplash.Models;
-using static Unsplash.Api.ApiEndpoints;
-using Unsplash.Client;
-using WireMock.ResponseBuilders;
 using Unsplash.Api.Topics;
+using Unsplash.Client;
+using Unsplash.Models;
+using WireMock.ResponseBuilders;
+using Xunit;
+using static Unsplash.Api.ApiEndpoints;
 
 namespace Unsplash.Tests
 {
@@ -34,6 +34,33 @@ namespace Unsplash.Tests
             var topics = await client.ListAsync();
 
             var actual = JsonConvert.SerializeObject(topics, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
+
+        [Fact]
+        public async Task GetTopic()
+        {
+            var topicData = JsonConvert.DeserializeObject<Topic.Full>(await File.ReadAllTextAsync("data/topics/GetTopicResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(topicData, JsonSerializerSettings);
+
+            var topicIdOrSlug = "941OMZGZvvA";
+
+            Server.Given(
+                WireMockHelpers.CreateGetRequestBuilder(TopicsApiUrls.Get(topicIdOrSlug), ACCESS_KEY, Constants.API_VERSION)
+            ).RespondWith(
+                Response.Create().WithStatusCode(200).WithBody(jsonData)
+            );
+
+            var client = new TopicsApi(new ApiClientOptions
+            {
+                BaseUrl = Server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var topic = await client.GetAsync(topicIdOrSlug);
+
+            var actual = JsonConvert.SerializeObject(topic, JsonSerializerSettings);
 
             Assert.Equal(jsonData, actual);
         }

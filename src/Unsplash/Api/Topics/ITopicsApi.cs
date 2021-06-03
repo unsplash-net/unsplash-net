@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Unsplash.Client;
-using Unsplash.Models;
 using Unsplash.Extensions;
+using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;
 
 namespace Unsplash.Api.Topics
@@ -11,6 +12,7 @@ namespace Unsplash.Api.Topics
     public interface ITopicsApi
     {
         Task<IEnumerable<Topic.Basic>> ListAsync(ListTopicsParams listTopicsParams = null);
+        Task<Topic.Full> GetAsync(string topicIdOrSlug);
     }
 
     public class ListTopicsParams
@@ -40,6 +42,18 @@ namespace Unsplash.Api.Topics
     {
         public TopicsApi(ApiClientOptions options) : base(options)
         {
+        }
+
+        public async Task<Topic.Full> GetAsync(string topicIdOrSlug)
+        {
+            if (string.IsNullOrWhiteSpace(topicIdOrSlug))
+            {
+                throw new ArgumentNullException(nameof(topicIdOrSlug));
+            }
+
+            var url = TopicsApiUrls.Get(topicIdOrSlug);
+
+            return await GetAsync<Topic.Full>(url);
         }
 
         public async Task<IEnumerable<Topic.Basic>> ListAsync(ListTopicsParams listTopicsParams = null)
