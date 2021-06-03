@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unsplash;
 using Unsplash.Extensions;
 using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;

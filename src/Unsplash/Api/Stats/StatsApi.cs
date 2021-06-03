@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Unsplash;
 using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;
 

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Unsplash;
 using Unsplash.Models;
 using static Unsplash.Api.ApiEndpoints;
 

@@ -1,6 +1,4 @@
-﻿using Unsplash.Api;
-
-namespace Unsplash.Api
+﻿namespace Unsplash.Api
 {
     public class GetUserPhotosParams
     {
