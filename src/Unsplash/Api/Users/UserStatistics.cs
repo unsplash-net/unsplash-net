@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Unsplash.Models;
 using Newtonsoft.Json;
+using Unsplash.Models;
 
 namespace Unsplash.Api.Users
 {
