@@ -68,7 +68,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetTopicPhotos()
         {
-            var topicPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(await File.ReadAllTextAsync("data/topics/GetTopicPhotosResponse.json"));
+            var topicPhotosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Basic>>(await File.ReadAllTextAsync("data/topics/GetTopicPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(topicPhotosData, JsonSerializerSettings);
 
             var topicIdOrSlug = "941OMZGZvvA";

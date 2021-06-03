@@ -8,6 +8,6 @@ namespace Unsplash.Api.Topics
     {
         Task<IEnumerable<Topic.Basic>> ListAsync(ListTopicsParams listTopicsParams = null);
         Task<Topic.Full> GetAsync(string topicIdOrSlug);
-        Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string topicIdOrSlug, GetTopicPhotosParams getTopicPhotosParams = null);
+        Task<IEnumerable<Photo.Basic>> GetPhotosAsync(string topicIdOrSlug, GetTopicPhotosParams getTopicPhotosParams = null);
     }
 }

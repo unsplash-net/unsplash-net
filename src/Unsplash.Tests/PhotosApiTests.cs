@@ -39,7 +39,7 @@ namespace Unsplash.Tests
         public async Task GetPhoto()
         {
             var photoId = "AWMNB_buDlQ";
-            var photoData = JsonConvert.DeserializeObject<PhotoFull>(await File.ReadAllTextAsync("data/photos/GetPhotoResponse.json"));
+            var photoData = JsonConvert.DeserializeObject<Photo.Full>(await File.ReadAllTextAsync("data/photos/GetPhotoResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photoData, JsonSerializerSettings);
 
             _server.Given(CreateGetRequestBuilder(PhotosApiUrls.GetPhoto(photoId)))
@@ -65,7 +65,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetPhotos()
         {
-            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoFull>>(await File.ReadAllTextAsync("data/photos/GetPhotosResponse.json"));
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Full>>(await File.ReadAllTextAsync("data/photos/GetPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             _server.Given(CreateGetRequestBuilder("/photos"))
@@ -92,7 +92,7 @@ namespace Unsplash.Tests
         public async Task GetPhotoStatistics()
         {
             // This is hack 🙈
-            var photosData = JsonConvert.DeserializeObject<Stats>(await File.ReadAllTextAsync("data/photos/GetPhotoStatistics.json"));
+            var photosData = JsonConvert.DeserializeObject<Photo.Stats>(await File.ReadAllTextAsync("data/photos/GetPhotoStatistics.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             var photoId = "pduutGbL2-M";
@@ -120,7 +120,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetRandomPhotos()
         {
-            var photosData = JsonConvert.DeserializeObject<IEnumerable<PhotoRandom>>(await File.ReadAllTextAsync("data/photos/GetRandomPhotosResponse.json"));
+            var photosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Random>>(await File.ReadAllTextAsync("data/photos/GetRandomPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(photosData, JsonSerializerSettings);
 
             _server.Given(CreateGetRequestBuilder("/photos/random"))
@@ -147,7 +147,7 @@ namespace Unsplash.Tests
         public async Task TrackPhoto()
         {
             var jsonData = "{\r\n  \"url\": \"https://images.unsplash.com/photo-1593642702909-dec73df255d7?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb\"\r\n}";
-            var data = JsonConvert.DeserializeObject<TrackPhotoDownload>(jsonData);
+            var data = JsonConvert.DeserializeObject<Photo.TrackPhotoDownload>(jsonData);
             jsonData = JsonConvert.SerializeObject(data, JsonSerializerSettings);
 
 

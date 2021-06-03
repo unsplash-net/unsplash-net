@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using Newtonsoft.Json;
 using Unsplash.Api.Users;
 using Unsplash.Client;
@@ -18,7 +16,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetUserPublicProfile()
         {
-            var profileData = JsonConvert.DeserializeObject<UserFull>(await File.ReadAllTextAsync("data/users/GetUserPublicProfileResponse.json"));
+            var profileData = JsonConvert.DeserializeObject<User.Full>(await File.ReadAllTextAsync("data/users/GetUserPublicProfileResponse.json"));
             var jsonData = JsonConvert.SerializeObject(profileData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
@@ -45,7 +43,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetUserPortfolioLink()
         {
-            var portfolioLinkData = JsonConvert.DeserializeObject<UrlLinkResponse>(await File.ReadAllTextAsync("data/users/GetUserPortfolioLinkResponse.json"));
+            var portfolioLinkData = JsonConvert.DeserializeObject<User.PortfolioLink>(await File.ReadAllTextAsync("data/users/GetUserPortfolioLinkResponse.json"));
             var jsonData = JsonConvert.SerializeObject(portfolioLinkData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
@@ -73,7 +71,7 @@ namespace Unsplash.Tests
         public async Task GetUserPhotos()
         {
             var fileData = await File.ReadAllTextAsync("data/users/GetUserPhotosResponse.json");
-            var userPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(fileData);
+            var userPhotosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Basic>>(fileData);
             var jsonData = JsonConvert.SerializeObject(userPhotosData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
@@ -101,7 +99,7 @@ namespace Unsplash.Tests
         public async Task GetUserLikedPhotos()
         {
             var fileData = await File.ReadAllTextAsync("data/users/GetUserLikedPhotosResponse.json");
-            var userLikedPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(fileData);
+            var userLikedPhotosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Basic>>(fileData);
             var jsonData = JsonConvert.SerializeObject(userLikedPhotosData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
@@ -129,7 +127,7 @@ namespace Unsplash.Tests
         public async Task GetUserCollections()
         {
             var fileData = await File.ReadAllTextAsync("data/users/GetUserCollectionsResponse.json");
-            var userCollectionsData = JsonConvert.DeserializeObject<IEnumerable<CollectionBasic>>(fileData);
+            var userCollectionsData = JsonConvert.DeserializeObject<IEnumerable<Collection.Basic>>(fileData);
             var jsonData = JsonConvert.SerializeObject(userCollectionsData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";

@@ -26,7 +26,7 @@ namespace Unsplash.Api.Topics
             return await GetAsync<Topic.Full>(url);
         }
 
-        public async Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string topicIdOrSlug, GetTopicPhotosParams getTopicPhotosParams = null)
+        public async Task<IEnumerable<Photo.Basic>> GetPhotosAsync(string topicIdOrSlug, GetTopicPhotosParams getTopicPhotosParams = null)
         {
             if (string.IsNullOrWhiteSpace(topicIdOrSlug))
             {
@@ -43,7 +43,7 @@ namespace Unsplash.Api.Topics
 
             var url = $"{TopicsApiUrls.GetPhotos(topicIdOrSlug)}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<IEnumerable<PhotoBasic>>(url);
+            return await GetAsync<IEnumerable<Photo.Basic>>(url);
         }
 
         public async Task<IEnumerable<Topic.Basic>> ListAsync(ListTopicsParams listTopicsParams = null)

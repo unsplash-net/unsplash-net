@@ -28,13 +28,13 @@ namespace Unsplash.Models
             Closed
         }
 
-        public interface ITopicBasic : IEntity
+        public interface IBasic : IEntity
         {
             [JsonProperty("cover_photo")]
-            PhotoBasic CoverPhoto { get; set; }
+            Photo.Basic CoverPhoto { get; set; }
 
             [JsonProperty("current_user_contributions")]
-            IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
+            IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
 
             [JsonProperty("description")]
             string Description { get; set; }
@@ -49,10 +49,10 @@ namespace Unsplash.Models
             Links Links { get; set; }
 
             [JsonProperty("owners")]
-            IEnumerable<UserBasic> Owners { get; set; }
+            IEnumerable<User.Basic> Owners { get; set; }
 
             [JsonProperty("preview_photos")]
-            IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
+            IEnumerable<Photo.VeryBasic> PreviewPhotos { get; set; }
 
             [JsonProperty("published_at")]
             string PublishedAt { get; set; }
@@ -77,22 +77,22 @@ namespace Unsplash.Models
             string UpdatedAt { get; set; }
         }
 
-        public interface ITopicFull : ITopicBasic
+        public interface IFull : IBasic
         {
             [JsonProperty("top_contributors")]
-            IEnumerable<UserBasic> TopContributors { get; set; }
+            IEnumerable<User.Basic> TopContributors { get; set; }
         }
 
-        public class Basic : ITopicBasic
+        public class Basic : IBasic
         {
-            public PhotoBasic CoverPhoto { get; set; }
-            public IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
+            public Photo.Basic CoverPhoto { get; set; }
+            public IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
             public string Description { get; set; }
             public string EndsAt { get; set; }
             public bool IsFeatured { get; set; }
             public Links Links { get; set; }
-            public IEnumerable<UserBasic> Owners { get; set; }
-            public IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
+            public IEnumerable<User.Basic> Owners { get; set; }
+            public IEnumerable<Photo.VeryBasic> PreviewPhotos { get; set; }
             public string PublishedAt { get; set; }
             public string StartsAt { get; set; }
             public Status Status { get; set; }
@@ -103,17 +103,17 @@ namespace Unsplash.Models
             public string Id { get; set; }
         }
 
-        public class Full : ITopicFull
+        public class Full : IFull
         {
-            public IEnumerable<UserBasic> TopContributors { get; set; }
-            public PhotoBasic CoverPhoto { get; set; }
-            public IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
+            public IEnumerable<User.Basic> TopContributors { get; set; }
+            public Photo.Basic CoverPhoto { get; set; }
+            public IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
             public string Description { get; set; }
             public string EndsAt { get; set; }
             public bool IsFeatured { get; set; }
             public Links Links { get; set; }
-            public IEnumerable<UserBasic> Owners { get; set; }
-            public IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
+            public IEnumerable<User.Basic> Owners { get; set; }
+            public IEnumerable<Photo.VeryBasic> PreviewPhotos { get; set; }
             public string PublishedAt { get; set; }
             public string StartsAt { get; set; }
             public Status Status { get; set; }

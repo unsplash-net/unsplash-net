@@ -13,21 +13,21 @@ namespace Unsplash.Api.Users
         {
         }
 
-        public async Task<UserFull> GetPublicProfileAsync(string username)
+        public async Task<User.Full> GetPublicProfileAsync(string username)
         {
             var url = UsersApiUrls.GetPublicProfile(username);
 
-            return await GetAsync<UserFull>(url);
+            return await GetAsync<User.Full>(url);
         }
 
-        public async Task<UrlLinkResponse> GetPortfolioLinkAsync(string username)
+        public async Task<User.PortfolioLink> GetPortfolioLinkAsync(string username)
         {
             var url = UsersApiUrls.GetPortfolioLink(username);
 
-            return await GetAsync<UrlLinkResponse>(url);
+            return await GetAsync<User.PortfolioLink>(url);
         }
 
-        public async Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null)
+        public async Task<IEnumerable<Photo.Basic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null)
         {
             if (parameters == null)
             {
@@ -47,10 +47,10 @@ namespace Unsplash.Api.Users
 
             var url = $"{UsersApiUrls.GetPhotos(username)}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<IEnumerable<PhotoBasic>>(url);
+            return await GetAsync<IEnumerable<Photo.Basic>>(url);
         }
 
-        public async Task<IEnumerable<PhotoBasic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null)
+        public async Task<IEnumerable<Photo.Basic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null)
         {
             if (parameters == null)
             {
@@ -67,10 +67,10 @@ namespace Unsplash.Api.Users
 
             var url = $"{UsersApiUrls.GetLikedPhotos(username)}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<IEnumerable<PhotoBasic>>(url);
+            return await GetAsync<IEnumerable<Photo.Basic>>(url);
         }
 
-        public async Task<IEnumerable<CollectionBasic>> GetCollectionsAsync(string username, PaginationParams parameters = null)
+        public async Task<IEnumerable<Collection.Basic>> GetCollectionsAsync(string username, PaginationParams parameters = null)
         {
             if (parameters == null)
             {
@@ -85,7 +85,7 @@ namespace Unsplash.Api.Users
 
             var url = $"{UsersApiUrls.GetCollections(username)}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<IEnumerable<CollectionBasic>>(url);
+            return await GetAsync<IEnumerable<Collection.Basic>>(url);
         }
 
         public async Task<UserStatistics> GetUserStatisticsAsync(string username, UserStatisticsParams parameters = null)

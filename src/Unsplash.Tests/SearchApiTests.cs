@@ -34,7 +34,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task SearchPhotos()
         {
-            var paginatedPhotosListData = JsonConvert.DeserializeObject<PaginatedList<PhotoBasic>>(await File.ReadAllTextAsync("data/search/SearchPhotosResponse.json"));
+            var paginatedPhotosListData = JsonConvert.DeserializeObject<PaginatedList<Photo.Basic>>(await File.ReadAllTextAsync("data/search/SearchPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(paginatedPhotosListData, JsonSerializerSettings);
 
             _server.Given(
@@ -63,7 +63,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task SearchCollections()
         {
-            var paginatedCollectionsListData = JsonConvert.DeserializeObject<PaginatedList<CollectionBasic>>(await File.ReadAllTextAsync("data/search/SearchCollectionsResponse.json"));
+            var paginatedCollectionsListData = JsonConvert.DeserializeObject<PaginatedList<Collection.Basic>>(await File.ReadAllTextAsync("data/search/SearchCollectionsResponse.json"));
             var jsonData = JsonConvert.SerializeObject(paginatedCollectionsListData, JsonSerializerSettings);
 
             _server.Given(
@@ -92,7 +92,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task SearchUsers()
         {
-            var paginatedUsersListData = JsonConvert.DeserializeObject<PaginatedList<UserMedium>>(await File.ReadAllTextAsync("data/search/SearchUsersResponse.json"));
+            var paginatedUsersListData = JsonConvert.DeserializeObject<PaginatedList<User.Medium>>(await File.ReadAllTextAsync("data/search/SearchUsersResponse.json"));
             var jsonData = JsonConvert.SerializeObject(paginatedUsersListData, JsonSerializerSettings);
 
             _server.Given(

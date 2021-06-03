@@ -14,7 +14,7 @@ namespace Unsplash.Api.Search
         {
         }
 
-        public async Task<PaginatedList<PhotoBasic>> PhotosAsync(string query, SearchPhotosParams parameters = null)
+        public async Task<PaginatedList<Photo.Basic>> PhotosAsync(string query, SearchPhotosParams parameters = null)
         {
             if (string.IsNullOrWhiteSpace(query))
             {
@@ -40,10 +40,10 @@ namespace Unsplash.Api.Search
 
             var url = $"{SearchApiUrls.Photos()}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<PaginatedList<PhotoBasic>>(url);
+            return await GetAsync<PaginatedList<Photo.Basic>>(url);
         }
 
-        public async Task<PaginatedList<CollectionBasic>> CollectionsAsync(string query, SearchCollectionsParams parameters = null)
+        public async Task<PaginatedList<Collection.Basic>> CollectionsAsync(string query, SearchCollectionsParams parameters = null)
         {
             if (string.IsNullOrWhiteSpace(query))
             {
@@ -64,10 +64,10 @@ namespace Unsplash.Api.Search
 
             var url = $"{SearchApiUrls.Collections()}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<PaginatedList<CollectionBasic>>(url);
+            return await GetAsync<PaginatedList<Collection.Basic>>(url);
         }
 
-        public async Task<PaginatedList<UserMedium>> UsersAsync(string query, SearchUsersParams parameters = null)
+        public async Task<PaginatedList<User.Medium>> UsersAsync(string query, SearchUsersParams parameters = null)
         {
             if (string.IsNullOrWhiteSpace(query))
             {
@@ -88,7 +88,7 @@ namespace Unsplash.Api.Search
 
             var url = $"{SearchApiUrls.Users()}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<PaginatedList<UserMedium>>(url);
+            return await GetAsync<PaginatedList<User.Medium>>(url);
         }
     }
 }
