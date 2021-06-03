@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Unsplash.Client;
 using Unsplash.Models;
+using static Unsplash.Api.ApiEndpoints;
 
 namespace Unsplash.Api.Stats
 {
@@ -8,13 +9,6 @@ namespace Unsplash.Api.Stats
     {
         Task<StatsTotals> GetTotalsAsync();
         Task<PastMonthStats> GetPastMonthStatsAsync();
-    }
-
-    public static class StatsApiUrls
-    {
-        public static string Totals() => "/stats/total";
-
-        public static string PastMonthStats() => "/stats/month";
     }
 
     public class StatsApi : ApiClient, IStatsApi

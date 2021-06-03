@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Unsplash.Api.Topics;
 using Unsplash.Client;
 using Unsplash.Models;
