@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using Unsplash.Api.Photos;
 using Unsplash.Client;
 using Unsplash.Extensions;
 using Unsplash.Models;
@@ -13,6 +14,7 @@ namespace Unsplash.Api.Topics
     {
         Task<IEnumerable<Topic.Basic>> ListAsync(ListTopicsParams listTopicsParams = null);
         Task<Topic.Full> GetAsync(string topicIdOrSlug);
+        Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string topicIdOrSlug, GetTopicPhotosParams getTopicPhotosParams = null);
     }
 
     public class ListTopicsParams
@@ -38,6 +40,14 @@ namespace Unsplash.Api.Topics
         }
     }
 
+    public class GetTopicPhotosParams
+    {
+        public int? Page { get; set; }
+        public int? PerPage { get; set; }
+        public Orientation? Orientation { get; set; }
+        public PhotoOrderBy? OrderBy { get; set; }
+    }
+
     public class TopicsApi : ApiClient, ITopicsApi
     {
         public TopicsApi(ApiClientOptions options) : base(options)
@@ -54,6 +64,26 @@ namespace Unsplash.Api.Topics
             var url = TopicsApiUrls.Get(topicIdOrSlug);
 
             return await GetAsync<Topic.Full>(url);
+        }
+
+        public async Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string topicIdOrSlug, GetTopicPhotosParams getTopicPhotosParams = null)
+        {
+            if (string.IsNullOrWhiteSpace(topicIdOrSlug))
+            {
+                throw new ArgumentNullException(nameof(topicIdOrSlug));
+            }
+
+            var queryParams = new Dictionary<string, string>
+            {
+                { "page", getTopicPhotosParams?.Page?.ToString() },
+                { "per_page", getTopicPhotosParams?.PerPage?.ToString() },
+                { "orientation", getTopicPhotosParams?.Orientation?.ToString() },
+                { "order_by", getTopicPhotosParams?.OrderBy?.GetEnumMemberAttrValue() }
+            };
+
+            var url = $"{TopicsApiUrls.GetPhotos(topicIdOrSlug)}?{UrlHelper.CreateQueryString(queryParams)}";
+
+            return await GetAsync<IEnumerable<PhotoBasic>>(url);
         }
 
         public async Task<IEnumerable<Topic.Basic>> ListAsync(ListTopicsParams listTopicsParams = null)

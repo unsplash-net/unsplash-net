@@ -7,6 +7,8 @@ namespace Unsplash.Api
             public static string List() => "/topics";
 
             public static string Get(string topicIdOrSlug) => $"/topics/{topicIdOrSlug}";
+
+            public static string GetPhotos(string topicIdOrSlug) => $"/topics/{topicIdOrSlug}/photos";
         }
     }
 }

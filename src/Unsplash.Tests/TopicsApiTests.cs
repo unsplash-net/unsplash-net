@@ -64,5 +64,32 @@ namespace Unsplash.Tests
 
             Assert.Equal(jsonData, actual);
         }
+
+        [Fact]
+        public async Task GetTopicPhotos()
+        {
+            var topicPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(await File.ReadAllTextAsync("data/topics/GetTopicPhotosResponse.json"));
+            var jsonData = JsonConvert.SerializeObject(topicPhotosData, JsonSerializerSettings);
+
+            var topicIdOrSlug = "941OMZGZvvA";
+
+            Server.Given(
+                WireMockHelpers.CreateGetRequestBuilder(TopicsApiUrls.GetPhotos(topicIdOrSlug), ACCESS_KEY, Constants.API_VERSION)
+            ).RespondWith(
+                Response.Create().WithStatusCode(200).WithBody(jsonData)
+            );
+
+            var client = new TopicsApi(new ApiClientOptions
+            {
+                BaseUrl = Server.Urls[0],
+                AccessKey = ACCESS_KEY
+            });
+
+            var topicPhotos = await client.GetPhotosAsync(topicIdOrSlug);
+
+            var actual = JsonConvert.SerializeObject(topicPhotos, JsonSerializerSettings);
+
+            Assert.Equal(jsonData, actual);
+        }
     }
 }
