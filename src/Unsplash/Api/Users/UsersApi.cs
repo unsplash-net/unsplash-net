@@ -20,11 +20,11 @@ namespace Unsplash.Api.Users
             return await GetAsync<User.Full>(url);
         }
 
-        public async Task<UrlLinkResponse> GetPortfolioLinkAsync(string username)
+        public async Task<User.PortfolioLink> GetPortfolioLinkAsync(string username)
         {
             var url = UsersApiUrls.GetPortfolioLink(username);
 
-            return await GetAsync<UrlLinkResponse>(url);
+            return await GetAsync<User.PortfolioLink>(url);
         }
 
         public async Task<IEnumerable<Photo.Basic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null)

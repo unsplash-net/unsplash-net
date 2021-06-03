@@ -43,7 +43,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetUserPortfolioLink()
         {
-            var portfolioLinkData = JsonConvert.DeserializeObject<UrlLinkResponse>(await File.ReadAllTextAsync("data/users/GetUserPortfolioLinkResponse.json"));
+            var portfolioLinkData = JsonConvert.DeserializeObject<User.PortfolioLink>(await File.ReadAllTextAsync("data/users/GetUserPortfolioLinkResponse.json"));
             var jsonData = JsonConvert.SerializeObject(portfolioLinkData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
