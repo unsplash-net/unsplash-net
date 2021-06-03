@@ -91,7 +91,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task GetConnectionPhotos()
         {
-            var collectionPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(await File.ReadAllTextAsync("data/collections/GetCollectionPhotosResponse.json"));
+            var collectionPhotosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Basic>>(await File.ReadAllTextAsync("data/collections/GetCollectionPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(collectionPhotosData);
 
             string collectionId = "542632";

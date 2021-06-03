@@ -14,7 +14,7 @@ namespace Unsplash.Api.Search
         {
         }
 
-        public async Task<PaginatedList<PhotoBasic>> PhotosAsync(string query, SearchPhotosParams parameters = null)
+        public async Task<PaginatedList<Photo.Basic>> PhotosAsync(string query, SearchPhotosParams parameters = null)
         {
             if (string.IsNullOrWhiteSpace(query))
             {
@@ -40,7 +40,7 @@ namespace Unsplash.Api.Search
 
             var url = $"{SearchApiUrls.Photos()}?{UrlHelper.CreateQueryString(queryParams)}";
 
-            return await GetAsync<PaginatedList<PhotoBasic>>(url);
+            return await GetAsync<PaginatedList<Photo.Basic>>(url);
         }
 
         public async Task<PaginatedList<Collection.Basic>> CollectionsAsync(string query, SearchCollectionsParams parameters = null)

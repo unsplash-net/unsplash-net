@@ -5,7 +5,7 @@ namespace Unsplash.Api.Search
 {
     public interface ISearchApi
     {
-        Task<PaginatedList<PhotoBasic>> PhotosAsync(string query, SearchPhotosParams parameters = null);
+        Task<PaginatedList<Photo.Basic>> PhotosAsync(string query, SearchPhotosParams parameters = null);
         Task<PaginatedList<Collection.Basic>> CollectionsAsync(string query, SearchCollectionsParams parameters = null);
         Task<PaginatedList<User.Medium>> UsersAsync(string query, SearchUsersParams parameters = null);
     }

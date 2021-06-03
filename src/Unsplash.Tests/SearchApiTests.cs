@@ -34,7 +34,7 @@ namespace Unsplash.Tests
         [Fact]
         public async Task SearchPhotos()
         {
-            var paginatedPhotosListData = JsonConvert.DeserializeObject<PaginatedList<PhotoBasic>>(await File.ReadAllTextAsync("data/search/SearchPhotosResponse.json"));
+            var paginatedPhotosListData = JsonConvert.DeserializeObject<PaginatedList<Photo.Basic>>(await File.ReadAllTextAsync("data/search/SearchPhotosResponse.json"));
             var jsonData = JsonConvert.SerializeObject(paginatedPhotosListData, JsonSerializerSettings);
 
             _server.Given(

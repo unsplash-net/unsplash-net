@@ -9,7 +9,7 @@ namespace Unsplash.Models
         public interface ICollectionBasic : IEntity
         {
             [JsonProperty("cover_photo")]
-            PhotoBasic CoverPhoto { get; set; }
+            Photo.Basic CoverPhoto { get; set; }
 
             [JsonProperty("description")]
             string Description { get; set; }
@@ -25,7 +25,7 @@ namespace Unsplash.Models
             Links Links { get; set; }
 
             [JsonProperty("preview_photos")]
-            List<PhotoVeryBasic> PreviewPhotos { get; set; }
+            List<Photo.VeryBasic> PreviewPhotos { get; set; }
 
 
             [JsonProperty("published_at")]
@@ -50,12 +50,12 @@ namespace Unsplash.Models
 
         public class Basic : ICollectionBasic
         {
-            public PhotoBasic CoverPhoto { get; set; }
+            public Photo.Basic CoverPhoto { get; set; }
             public string Description { get; set; }
             public bool Featured { get; set; }
             public DateTimeOffset LastCollectedAt { get; set; }
             public Links Links { get; set; }
-            public List<PhotoVeryBasic> PreviewPhotos { get; set; }
+            public List<Photo.VeryBasic> PreviewPhotos { get; set; }
             public DateTimeOffset PublishedAt { get; set; }
             public string Title { get; set; }
             public int TotalPhotos { get; set; }

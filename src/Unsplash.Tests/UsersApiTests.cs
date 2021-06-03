@@ -71,7 +71,7 @@ namespace Unsplash.Tests
         public async Task GetUserPhotos()
         {
             var fileData = await File.ReadAllTextAsync("data/users/GetUserPhotosResponse.json");
-            var userPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(fileData);
+            var userPhotosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Basic>>(fileData);
             var jsonData = JsonConvert.SerializeObject(userPhotosData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";
@@ -99,7 +99,7 @@ namespace Unsplash.Tests
         public async Task GetUserLikedPhotos()
         {
             var fileData = await File.ReadAllTextAsync("data/users/GetUserLikedPhotosResponse.json");
-            var userLikedPhotosData = JsonConvert.DeserializeObject<IEnumerable<PhotoBasic>>(fileData);
+            var userLikedPhotosData = JsonConvert.DeserializeObject<IEnumerable<Photo.Basic>>(fileData);
             var jsonData = JsonConvert.SerializeObject(userLikedPhotosData, JsonSerializerSettings);
 
             var username = "amyjoyhumphries";

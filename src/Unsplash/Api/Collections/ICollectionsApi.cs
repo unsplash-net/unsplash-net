@@ -8,7 +8,7 @@ namespace Unsplash.Api.Collections
     {
         Task<IEnumerable<Collection.Basic>> ListAsync(ListCollectionsParams parameters = null);
         Task<Collection.Basic> GetCollectionAsync(string collectionId);
-        Task<IEnumerable<PhotoBasic>> GetCollectionPhotosAsync(string collectionId, GetCollectionPhotosParams parameters = null);
+        Task<IEnumerable<Photo.Basic>> GetCollectionPhotosAsync(string collectionId, GetCollectionPhotosParams parameters = null);
         Task<IEnumerable<Collection.Basic>> GetRelatedCollectionsAsync(string collectionId);
     }
 }

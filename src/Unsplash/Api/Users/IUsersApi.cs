@@ -8,8 +8,8 @@ namespace Unsplash.Api.Users
     {
         Task<User.Full> GetPublicProfileAsync(string username);
         Task<UrlLinkResponse> GetPortfolioLinkAsync(string username);
-        Task<IEnumerable<PhotoBasic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null);
-        Task<IEnumerable<PhotoBasic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null);
+        Task<IEnumerable<Photo.Basic>> GetPhotosAsync(string username, GetUserPhotosParams parameters = null);
+        Task<IEnumerable<Photo.Basic>> GetLikedPhotosAsync(string username, GetUserLikedPhotosParams parameters = null);
         Task<IEnumerable<Collection.Basic>> GetCollectionsAsync(string username, PaginationParams parameters = null);
         Task<UserStatistics> GetUserStatisticsAsync(string username, UserStatisticsParams parameters = null);
     }

@@ -132,12 +132,12 @@ namespace Unsplash.Models
         public interface IUserMedium : IUserBasic
         {
             [JsonProperty("photos")]
-            IEnumerable<PhotoVeryBasic> Photos { get; set; }
+            IEnumerable<Photo.VeryBasic> Photos { get; set; }
         }
 
         public class Medium : IUserMedium
         {
-            public IEnumerable<PhotoVeryBasic> Photos { get; set; }
+            public IEnumerable<Photo.VeryBasic> Photos { get; set; }
             public string Bio { get; set; }
             public string FirstName { get; set; }
             public string InstagramUsername { get; set; }

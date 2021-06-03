@@ -31,10 +31,10 @@ namespace Unsplash.Models
         public interface ITopicBasic : IEntity
         {
             [JsonProperty("cover_photo")]
-            PhotoBasic CoverPhoto { get; set; }
+            Photo.Basic CoverPhoto { get; set; }
 
             [JsonProperty("current_user_contributions")]
-            IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
+            IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
 
             [JsonProperty("description")]
             string Description { get; set; }
@@ -52,7 +52,7 @@ namespace Unsplash.Models
             IEnumerable<User.Basic> Owners { get; set; }
 
             [JsonProperty("preview_photos")]
-            IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
+            IEnumerable<Photo.VeryBasic> PreviewPhotos { get; set; }
 
             [JsonProperty("published_at")]
             string PublishedAt { get; set; }
@@ -85,14 +85,14 @@ namespace Unsplash.Models
 
         public class Basic : ITopicBasic
         {
-            public PhotoBasic CoverPhoto { get; set; }
-            public IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
+            public Photo.Basic CoverPhoto { get; set; }
+            public IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
             public string Description { get; set; }
             public string EndsAt { get; set; }
             public bool IsFeatured { get; set; }
             public Links Links { get; set; }
             public IEnumerable<User.Basic> Owners { get; set; }
-            public IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
+            public IEnumerable<Photo.VeryBasic> PreviewPhotos { get; set; }
             public string PublishedAt { get; set; }
             public string StartsAt { get; set; }
             public Status Status { get; set; }
@@ -106,14 +106,14 @@ namespace Unsplash.Models
         public class Full : ITopicFull
         {
             public IEnumerable<User.Basic> TopContributors { get; set; }
-            public PhotoBasic CoverPhoto { get; set; }
-            public IEnumerable<PhotoVeryBasic> CurrentUserContributions { get; set; }
+            public Photo.Basic CoverPhoto { get; set; }
+            public IEnumerable<Photo.VeryBasic> CurrentUserContributions { get; set; }
             public string Description { get; set; }
             public string EndsAt { get; set; }
             public bool IsFeatured { get; set; }
             public Links Links { get; set; }
             public IEnumerable<User.Basic> Owners { get; set; }
-            public IEnumerable<PhotoVeryBasic> PreviewPhotos { get; set; }
+            public IEnumerable<Photo.VeryBasic> PreviewPhotos { get; set; }
             public string PublishedAt { get; set; }
             public string StartsAt { get; set; }
             public Status Status { get; set; }
