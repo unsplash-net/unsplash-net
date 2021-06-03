@@ -10,6 +10,7 @@ using Unsplash.Models;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 using Xunit;
+using static Unsplash.Api.ApiEndpoints;
 
 namespace Unsplash.Tests
 {

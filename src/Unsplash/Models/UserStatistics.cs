@@ -1,21 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Unsplash.Models;
 
-namespace Unsplash.Api.Users
+namespace Unsplash.Models
 {
-    public class UserStatisticsParams
-    {
-        public UserStatisticsParams(string resolution = null, int? quantity = null)
-        {
-            Resolution = resolution;
-            Quantity = quantity;
-        }
-
-        public string Resolution { get; set; }
-        public int? Quantity { get; set; }
-    }
-
     public class UserStatistics : IEntity
     {
         public string Id { get; set; }
